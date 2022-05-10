@@ -6,8 +6,6 @@ using System.Text;          // 다른 객체로 변환하기위해
 
 public class DataController : Singleton<DataController>
 {
-
-
     void Start()
     {
         // 게임에 접속하지 않아도 시간이 흐른만큼 골드를 더해준다. (최대 3일 까지)

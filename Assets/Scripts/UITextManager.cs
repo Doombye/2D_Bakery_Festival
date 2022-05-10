@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class UITextManager : MonoBehaviour
 {
     [SerializeField] Text goldText;
-    [SerializeField] Text clickGoldText;
+    [SerializeField] Text rubyText;
     [SerializeField] Text goldPerSecText;
 
 
     private void Update()
     {
-        goldText.text = string.Format("{0:#,###0}");
-        clickGoldText.text = "Work :" + string.Format("{0:#,###0}" + "Gold");
-        goldPerSecText.text = "WagePerSec : "
-            + string.Format("{0:#,###0}") + "Gold";
+        goldText.text = string.Format("{0:#,###0}", DataController.Instance.Gold + "$");
+        // rubyText.text = "Ruby :" + string.Format("{0:#,###0}");
+        // goldPerSecText.text = "WagePerSec : " + string.Format("{0:#,###0}") + "$/s";
     }
 
     /*
