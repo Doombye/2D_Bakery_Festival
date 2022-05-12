@@ -6,6 +6,10 @@ using System.Text;          // 다른 객체로 변환하기위해
 
 public class DataController : Singleton<DataController>
 {
+    // 초당 수익 버튼 저장 배열
+    public GoldPerSecButton[] goldPerSecButtons;
+    int sumValue;
+
     void Start()
     {
         // 게임에 접속하지 않아도 시간이 흐른만큼 골드를 더해준다. (최대 3일 까지)
@@ -47,7 +51,7 @@ public class DataController : Singleton<DataController>
     // 게임 종료시 자동으로 불리는 함수
     private void OnApplicationQuit()
     {
-        UpdateLastPlayDate();       // 게임 종료시 플레이 타임 저장.
+        UpdateLastPlayDate();                           // 게임 종료시 플레이 타임 저장.
     }
 
     // 현재 골드량
@@ -86,6 +90,72 @@ public class DataController : Singleton<DataController>
         }
     }
 
+    // 초당 수익 데이터 불러오기
+    public void LoadWorkButton(GoldPerSecButton itemButton)
+    {
+        string key = itemButton.itemName;
 
+        // 저장되있는 키값을 이용해서 데이터불러오기
+        itemButton.level = PlayerPrefs.GetInt(key + "_level");
+        itemButton.currentCost = PlayerPrefs.GetInt(key + "_cost", itemButton.startCurrentCost);
+        itemButton.goldPerCec = PlayerPrefs.GetInt(key + "_goldPerSec", itemButton.startGoldPerSec);
+
+        // isBuy : 구매 여부 확인
+        // 아이템이 구매가 되어있다면 1, 아니면 0 으로 구매여부를 확인한 후 불러온다.
+        if (PlayerPrefs.GetInt(key + "_isBuy") == 1)
+        {
+            itemButton.isBuy = true;
+        }
+        else
+        {
+            itemButton.isBuy = false;
+        }
+    }
+
+    // 초당 수익 데이터 저장
+    public void SaveWorkButton(GoldPerSecButton itemButton)
+    {
+        string key = itemButton.itemName;
+
+        PlayerPrefs.SetInt(key + "_level", itemButton.level);
+        PlayerPrefs.SetInt(key + "_cost", itemButton.currentCost);
+        PlayerPrefs.SetInt(key + "_goldPerSec", itemButton.goldPerCec);
+
+        // isBuy : 구매 여부 확인
+        // 아이템이 구매가 되어있다면 1, 아니면 0 으로 구매여부를 확인한 후 저장한다.
+        if (itemButton.isBuy == true)
+        {
+            PlayerPrefs.SetInt(key + "_isBuy", 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt(key + "_isBuy", 0);
+        }
+    }
+
+
+
+
+
+
+    public int GetGoldPerSec()
+    {
+        // 초당 수익 합
+        int sum = 0;
+
+        for (int i = 0; i < goldPerSecButtons.Length; i++)
+        {
+            if (goldPerSecButtons[i].isBuy == true)                    // workButtons 버튼을 구매 했을 경우에만 goldPerCec 를 더해준다.
+                sum += goldPerSecButtons[i].goldPerCec;
+        }
+        Debug.Log("GetGoldPerSec 불림");
+        return sum;
+    }
+    public void SetGoldPerSec()
+    {
+        PlayerPrefs.SetInt("_isGoldPerSecSum", GetGoldPerSec());
+
+        Debug.Log(" 초당수익 저장");
+    }
 
 }

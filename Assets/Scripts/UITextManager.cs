@@ -14,7 +14,7 @@ public class UITextManager : MonoBehaviour
     {
         goldText.text = string.Format("{0:#,###0}", DataController.Instance.Gold + "$");
         // rubyText.text = "Ruby :" + string.Format("{0:#,###0}");
-        // goldPerSecText.text = "WagePerSec : " + string.Format("{0:#,###0}") + "$/s";
+        goldPerSecText.text = string.Format("{0:#,###0}", DataController.Instance.GetGoldPerSec()) + "/s";
     }
 
     /*
