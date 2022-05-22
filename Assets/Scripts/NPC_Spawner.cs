@@ -35,7 +35,7 @@ public class NPC_Spawner : MonoBehaviour
         if (timer >= spawnTime)
         {
             Debug.Log("¼Õ´Ô »ý»ê");
-            Instantiate(prefab, pivot.position, Quaternion.identity);
+            Instantiate(prefab, pivot.position, Quaternion.Euler(0,180.0f,0));
             timer = 0;
             count++;
         }
