@@ -5,26 +5,24 @@ using UnityEngine;
 public class NPC : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
-    [SerializeField] float deleteTimer;
 
-    Transform target;
-    Rigidbody2D rigid;
-    Collider2D col;
+    public Transform target;
+    public string PositionType = "End";
+    Transform EndPos;
+    Rigidbody2D rigid; 
 
-    float timer;
-    
+
 
     private void Start()
     {
-        rigid = GetComponent<Rigidbody2D>();
-        target = GameObject.FindGameObjectWithTag("End").GetComponent<Transform>();
-        col = GetComponent<Collider2D>();
+        rigid = GetComponent<Rigidbody2D>(); 
+        EndPos = GameObject.FindGameObjectWithTag("End").GetComponent<Transform>();
+        target = EndPos;
     }
 
-    private void Update()
+    void Update()
     {
-        GoTarget();
-        DeleteNPC();
+        GoTarget();        
     }
 
     void GoTarget()
@@ -35,13 +33,11 @@ public class NPC : MonoBehaviour
         }
     }
 
-    void DeleteNPC()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        timer += Time.deltaTime;
-        if(timer >= deleteTimer)
-        {
-            Destroy(gameObject);
-            timer = 0;
+        if(collision.gameObject.CompareTag("TargetToEnd"))
+        { 
+            target = EndPos;
         }
     }
 }

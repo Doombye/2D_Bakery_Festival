@@ -12,19 +12,15 @@ public class NPC_Spawner : MonoBehaviour
     float timer = 0;
     int count = 0;
 
-    private void Start()
-    {
-        Spawn();
-    }
+  
 
     private void Update()
     {
         if (count > MaxCount)
             return;
 
-        if (count <= MaxCount)
-        {
-            
+        if (count < MaxCount)
+        {            
             Spawn();
         }
     }
@@ -35,7 +31,7 @@ public class NPC_Spawner : MonoBehaviour
         if (timer >= spawnTime)
         {
             Debug.Log("¼Õ´Ô »ý»ê");
-            Instantiate(prefab, pivot.position, Quaternion.Euler(0,180.0f,0));
+            Instantiate(prefab, pivot.position, Quaternion.Euler(0,180,0), GameObject.Find("Canvas").transform);
             timer = 0;
             count++;
         }

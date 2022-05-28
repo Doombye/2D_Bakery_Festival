@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
   m_Name: hamster_Atlas
   m_EditorClassIdentifier: 
-  atlasFile: {fileID: 4900000, guid: 5ed4ffe008758c140b26f290de79ab46, type: 3}
+  atlasFile: {fileID: 4900000, guid: 00eb919d66389034cb8d04ee7f6f6447, type: 3}
   materials:
-  - {fileID: 2100000, guid: 1dc7ae35bc5ced04ca3e578e3c99048d, type: 2}
+  - {fileID: 2100000, guid: 3d46d64e6c53cbd4eb83bcded5844a8f, type: 2}

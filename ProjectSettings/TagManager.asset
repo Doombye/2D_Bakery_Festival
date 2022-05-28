@@ -6,7 +6,10 @@ TagManager:
   tags:
   - Target
   - End
-  - Delete
+  - DestroyPosition
+  - NPC
+  - TargetToEnd
+  - Canvas
   layers:
   - Default
   - TransparentFX

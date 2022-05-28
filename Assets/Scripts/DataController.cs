@@ -13,7 +13,7 @@ public class DataController : Singleton<DataController>
     void Start()
     {
         // 게임에 접속하지 않아도 시간이 흐른만큼 골드를 더해준다. (최대 3일 까지)
-        Gold += PlayerPrefs.GetInt("_isGoldPerSecSum") * Mathf.Clamp(AfterTime(), 0, 260000);       
+        Gold += PlayerPrefs.GetInt("_isGoldPerSecSum") * Mathf.Clamp(AfterTime(), 0, 260000);
     }
 
     // 마지막 플레이 날짜
@@ -147,15 +147,13 @@ public class DataController : Singleton<DataController>
         {
             if (goldPerSecButtons[i].isBuy == true)                    // workButtons 버튼을 구매 했을 경우에만 goldPerCec 를 더해준다.
                 sum += goldPerSecButtons[i].goldPerCec;
-        }
-        Debug.Log("GetGoldPerSec 불림");
+        } 
         return sum;
     }
     public void SetGoldPerSec()
     {
         PlayerPrefs.SetInt("_isGoldPerSecSum", GetGoldPerSec());
-
-        Debug.Log(" 초당수익 저장");
+         
     }
 
 }
