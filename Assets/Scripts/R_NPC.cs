@@ -2,20 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC : MonoBehaviour
+public class R_NPC : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
     [SerializeField] float Destorytimer;
 
+
     Transform EndPos;
     Rigidbody2D rigid;
-  
+
     float lifeTimer;
+
 
     private void Start()
     {
-        rigid = GetComponent<Rigidbody2D>(); 
-        EndPos = GameObject.FindGameObjectWithTag("L_End").GetComponent<Transform>();
+        rigid = GetComponent<Rigidbody2D>();
+        EndPos = GameObject.FindGameObjectWithTag("R_End").GetComponent<Transform>();
+
     }
 
     void Update()
@@ -35,7 +38,7 @@ public class NPC : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("L_End"))
+        if (collision.gameObject.CompareTag("R_End"))
         {
             Destroy(gameObject);
         }
@@ -43,7 +46,7 @@ public class NPC : MonoBehaviour
 
     void Destroy()
     {
-        if(lifeTimer >= Destorytimer)
+        if (lifeTimer >= Destorytimer)
         {
             Destroy(gameObject);
         }

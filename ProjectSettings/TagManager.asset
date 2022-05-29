@@ -10,6 +10,8 @@ TagManager:
   - NPC
   - TargetToEnd
   - Canvas
+  - R_End
+  - L_End
   layers:
   - Default
   - TransparentFX
