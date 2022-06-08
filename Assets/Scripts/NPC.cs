@@ -6,6 +6,7 @@ public class NPC : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
     [SerializeField] float Destorytimer;
+<<<<<<< HEAD
 
 
     Transform EndPos;
@@ -31,10 +32,23 @@ public class NPC : MonoBehaviour
         EndPos = GameObject.FindGameObjectWithTag("L_End").GetComponent<Transform>();
 
         moveSpeed = (width * percent) / 100;    // 이동속도를 가로해상도의 퍼센트 만큼 이동한다.
+=======
+
+    Transform EndPos;
+    Rigidbody2D rigid;
+  
+    float lifeTimer;
+
+    private void Start()
+    {
+        rigid = GetComponent<Rigidbody2D>(); 
+        EndPos = GameObject.FindGameObjectWithTag("L_End").GetComponent<Transform>();
+>>>>>>> 46b4b2ddbadf01c920a463fdfa1daa2945225af0
     }
 
     void Update()
     {
+<<<<<<< HEAD
         if (!HaveTarget)
             SetTarget(EndPos.transform.position);
 
@@ -45,10 +59,16 @@ public class NPC : MonoBehaviour
         {
             SetTarget(EndPos.transform.position);
         }
+=======
+        GoTarget();
+        Destroy();
+        lifeTimer += Time.deltaTime;
+>>>>>>> 46b4b2ddbadf01c920a463fdfa1daa2945225af0
     }
 
     void SetTarget(Vector3 N)
     {
+<<<<<<< HEAD
         HaveTarget = true;
         TargetPos = N;
     }
@@ -57,11 +77,17 @@ public class NPC : MonoBehaviour
         if (Vector2.Distance(transform.position, N) > 0.1f)
         {
             transform.position = Vector2.MoveTowards(transform.position, N, moveSpeed * Time.deltaTime);
+=======
+        if (Vector2.Distance(transform.position, EndPos.position) > 0.1f)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, EndPos.position, moveSpeed * Time.deltaTime);
+>>>>>>> 46b4b2ddbadf01c920a463fdfa1daa2945225af0
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+<<<<<<< HEAD
         if (collision.gameObject.CompareTag("L_End"))
         {
             Destroy(gameObject);
@@ -222,6 +248,19 @@ public class NPC : MonoBehaviour
         {
             ReturnT = 0;
             StartCoroutine("ReturnTimer");
+=======
+        if(collision.gameObject.CompareTag("L_End"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void Destroy()
+    {
+        if(lifeTimer >= Destorytimer)
+        {
+            Destroy(gameObject);
+>>>>>>> 46b4b2ddbadf01c920a463fdfa1daa2945225af0
         }
     }
 

@@ -108,6 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 150
   Destorytimer: 20
+<<<<<<< HEAD
   HaveTarget: 0
   TargetPos: {x: 0, y: 0, z: 0}
   percent: 10
@@ -158,3 +159,5 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+=======
+>>>>>>> 46b4b2ddbadf01c920a463fdfa1daa2945225af0

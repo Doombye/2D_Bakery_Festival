@@ -12,6 +12,7 @@ TagManager:
   - Canvas
   - R_End
   - L_End
+<<<<<<< HEAD
   - Food1
   - PieShop
   - PieShopStay1
@@ -36,6 +37,8 @@ TagManager:
   - DonutShopStay4
   - MelonShopStay3
   - MelonShopStay4
+=======
+>>>>>>> 46b4b2ddbadf01c920a463fdfa1daa2945225af0
   layers:
   - Default
   - TransparentFX
