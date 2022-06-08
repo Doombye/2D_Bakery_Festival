@@ -3,42 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Target
-  - End
-  - DestroyPosition
-  - NPC
-  - TargetToEnd
-  - Canvas
-  - R_End
-  - L_End
-<<<<<<< HEAD
-  - Food1
-  - PieShop
-  - PieShopStay1
-  - PieShopStay2
-  - CookieShop
-  - CookieShopStay1
-  - CookieShopStay2
-  - StartTimer
-  - CakeShopStay1
-  - CakeShopStay2
-  - DonutShopStay1
-  - DonutShopStay2
-  - MelonShopStay1
-  - MelonShopStay2
-  - CookieShopStay3
-  - CookieShopStay4
-  - PieShopStay3
-  - PieShopStay4
-  - CakeShopStay3
-  - CakeShopStay4
-  - DonutShopStay3
-  - DonutShopStay4
-  - MelonShopStay3
-  - MelonShopStay4
-=======
->>>>>>> 46b4b2ddbadf01c920a463fdfa1daa2945225af0
+  tags: []
   layers:
   - Default
   - TransparentFX
