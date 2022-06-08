@@ -11,4 +11,6 @@ public class DestroyPointMng : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
+ 
+
 }

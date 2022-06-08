@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC_Spawner : MonoBehaviour
+public class R_NPC_Spawn : MonoBehaviour
 {
     [SerializeField] GameObject prefab;
     [SerializeField] Transform pivot;
@@ -18,7 +18,7 @@ public class NPC_Spawner : MonoBehaviour
             return;
 
         if (count < MaxCount)
-        {            
+        {
             Spawn();
         }
     }
@@ -29,7 +29,7 @@ public class NPC_Spawner : MonoBehaviour
         if (timer >= spawnTime)
         {
             Debug.Log("¼Õ´Ô »ý»ê");
-            Instantiate(prefab, pivot.position, Quaternion.Euler(0,180,0), GameObject.Find("Canvas").transform);
+            Instantiate(prefab, pivot.position, Quaternion.Euler(0,0,0), GameObject.Find("Canvas").transform);
             timer = 0;
             count++;
         }

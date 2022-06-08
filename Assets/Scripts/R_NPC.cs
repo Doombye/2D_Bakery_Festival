@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC : MonoBehaviour
+public class R_NPC : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
     [SerializeField] float Destorytimer;
@@ -10,8 +10,7 @@ public class NPC : MonoBehaviour
 
     Transform EndPos;
     public bool HaveTarget = false;
-    [SerializeField]Vector3 TargetPos;
-    [SerializeField] float percent;
+    Vector3 TargetPos;
 
     Rigidbody2D rigid;
 
@@ -21,25 +20,20 @@ public class NPC : MonoBehaviour
 
     int ReturnToNew = 99999;
     int ReturnTempNum = 99991;
-
-    int width = Screen.width;       // 가로 해상도
-
-
     private void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
-        EndPos = GameObject.FindGameObjectWithTag("L_End").GetComponent<Transform>();
-
-        moveSpeed = (width * percent) / 100;    // 이동속도를 가로해상도의 퍼센트 만큼 이동한다.
+        EndPos = GameObject.FindGameObjectWithTag("R_End").GetComponent<Transform>();
+        
     }
 
     void Update()
     {
-        if (!HaveTarget)
-            SetTarget(EndPos.transform.position);
+        if(!HaveTarget) 
+        SetTarget(EndPos.transform.position);
 
         MoveToTarget(TargetPos);
-
+         
         lifeTimer += Time.deltaTime;
         if (this.transform.position.y == EndPos.transform.position.y)
         {
@@ -62,11 +56,11 @@ public class NPC : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("L_End"))
+        if (collision.gameObject.CompareTag("R_End"))
         {
             Destroy(gameObject);
         }
-
+        
     }
 
     //파이 1 쿠키 2 케이크 3 도넛 4 멜론 5
@@ -83,12 +77,12 @@ public class NPC : MonoBehaviour
                 switch (ShopTargetNum)
                 {
                     case 0:
-                        T1 = GameObject.FindGameObjectWithTag("PieShopStay3").GetComponent<Transform>();
+                        T1 = GameObject.FindGameObjectWithTag("PieShopStay1").GetComponent<Transform>();
                         SetTarget(T1.transform.position);
                         ReturnToNew = 1;
                         break;
                     case 1:
-                        T1 = GameObject.FindGameObjectWithTag("PieShopStay4").GetComponent<Transform>();
+                        T1 = GameObject.FindGameObjectWithTag("PieShopStay2").GetComponent<Transform>();
                         SetTarget(T1.transform.position);
                         ReturnToNew = 2;
                         break;
@@ -113,12 +107,12 @@ public class NPC : MonoBehaviour
                 switch (ShopTargetNum)
                 {
                     case 0:
-                        T1 = GameObject.FindGameObjectWithTag("CookieShopStay3").GetComponent<Transform>();
+                        T1 = GameObject.FindGameObjectWithTag("CookieShopStay1").GetComponent<Transform>();
                         SetTarget(T1.transform.position);
                         ReturnToNew = 3;
                         break;
                     case 1:
-                        T1 = GameObject.FindGameObjectWithTag("CookieShopStay4").GetComponent<Transform>();
+                        T1 = GameObject.FindGameObjectWithTag("CookieShopStay2").GetComponent<Transform>();
                         SetTarget(T1.transform.position);
                         ReturnToNew = 4;
                         break;
@@ -133,6 +127,7 @@ public class NPC : MonoBehaviour
         }
         if (collision.gameObject.name == "CakeShopBox" && ReturnTempNum != 3)
         {
+            Debug.Log("CakeShopCollision");
             ReturnTempNum = 3;
             int RandN = Random.Range(1, 2);
             Transform T1;
@@ -142,12 +137,12 @@ public class NPC : MonoBehaviour
                 switch (ShopTargetNum)
                 {
                     case 0:
-                        T1 = GameObject.FindGameObjectWithTag("CakeShopStay3").GetComponent<Transform>();
+                        T1 = GameObject.FindGameObjectWithTag("CakeShopStay1").GetComponent<Transform>();
                         SetTarget(T1.transform.position);
                         ReturnToNew = 5;
                         break;
                     case 1:
-                        T1 = GameObject.FindGameObjectWithTag("CakeShopStay4").GetComponent<Transform>();
+                        T1 = GameObject.FindGameObjectWithTag("CakeShopStay2").GetComponent<Transform>();
                         SetTarget(T1.transform.position);
                         ReturnToNew = 6;
                         break;
@@ -171,12 +166,12 @@ public class NPC : MonoBehaviour
                 switch (ShopTargetNum)
                 {
                     case 0:
-                        T1 = GameObject.FindGameObjectWithTag("DonutShopStay3").GetComponent<Transform>();
+                        T1 = GameObject.FindGameObjectWithTag("DonutShopStay1").GetComponent<Transform>();
                         SetTarget(T1.transform.position);
                         ReturnToNew = 7;
                         break;
                     case 1:
-                        T1 = GameObject.FindGameObjectWithTag("DonutShopStay4").GetComponent<Transform>();
+                        T1 = GameObject.FindGameObjectWithTag("DonutShopStay2").GetComponent<Transform>();
                         SetTarget(T1.transform.position);
                         ReturnToNew = 8;
                         break;
@@ -200,12 +195,12 @@ public class NPC : MonoBehaviour
                 switch (ShopTargetNum)
                 {
                     case 0:
-                        T1 = GameObject.FindGameObjectWithTag("MelonShopStay3").GetComponent<Transform>();
+                        T1 = GameObject.FindGameObjectWithTag("MelonShopStay1").GetComponent<Transform>();
                         SetTarget(T1.transform.position);
                         ReturnToNew = 9;
                         break;
                     case 1:
-                        T1 = GameObject.FindGameObjectWithTag("MelonShopStay4").GetComponent<Transform>();
+                        T1 = GameObject.FindGameObjectWithTag("MelonShopStay2").GetComponent<Transform>();
                         SetTarget(T1.transform.position);
                         ReturnToNew = 10;
                         break;
@@ -229,50 +224,50 @@ public class NPC : MonoBehaviour
     {
         if (name == "PieShop")
         {
-            if (GameObject.Find("PieShopStay3").GetComponent<EmptyPlace>().IsEmpty)
+            if (GameObject.Find("PieShopStay1").GetComponent<EmptyPlace>().IsEmpty)
             {
-                GameObject.Find("PieShopStay3").GetComponent<EmptyPlace>().IsEmpty = false;
+                GameObject.Find("PieShopStay1").GetComponent<EmptyPlace>().IsEmpty = false;
                 return 0;
             }
-            else if (GameObject.Find("PieShopStay4").GetComponent<EmptyPlace>().IsEmpty)
+            else if (GameObject.Find("PieShopStay2").GetComponent<EmptyPlace>().IsEmpty)
             {
-                GameObject.Find("PieShopStay4").GetComponent<EmptyPlace>().IsEmpty = false;
+                GameObject.Find("PieShopStay2").GetComponent<EmptyPlace>().IsEmpty = false;
                 return 1;
             }
-
+          
             else
             {
                 return 1111;
-            }
+            }    
         }
         if (name == "CookieShop")
         {
-            if (GameObject.Find("CookieShopStay3").GetComponent<EmptyPlace>().IsEmpty)
+            if (GameObject.Find("CookieShopStay1").GetComponent<EmptyPlace>().IsEmpty)
             {
-                GameObject.Find("CookieShopStay3").GetComponent<EmptyPlace>().IsEmpty = false;
+                GameObject.Find("CookieShopStay1").GetComponent<EmptyPlace>().IsEmpty = false;
                 return 0;
             }
-            else if (GameObject.Find("CookieShopStay4").GetComponent<EmptyPlace>().IsEmpty)
+            else if (GameObject.Find("CookieShopStay2").GetComponent<EmptyPlace>().IsEmpty)
             {
-                GameObject.Find("CookieShopStay4").GetComponent<EmptyPlace>().IsEmpty = false;
+                GameObject.Find("CookieShopStay2").GetComponent<EmptyPlace>().IsEmpty = false;
                 return 1;
             }
-
+          
             else
             {
                 return 1111;
             }
-        }
+        } 
         if (name == "CakeShop")
         {
-            if (GameObject.Find("CakeShopStay3").GetComponent<EmptyPlace>().IsEmpty)
+            if (GameObject.Find("CakeShopStay1").GetComponent<EmptyPlace>().IsEmpty)
             {
-                GameObject.Find("CakeShopStay3").GetComponent<EmptyPlace>().IsEmpty = false;
+                GameObject.Find("CakeShopStay1").GetComponent<EmptyPlace>().IsEmpty = false;
                 return 0;
             }
-            else if (GameObject.Find("CakeShopStay4").GetComponent<EmptyPlace>().IsEmpty)
+            else if (GameObject.Find("CakeShopStay2").GetComponent<EmptyPlace>().IsEmpty)
             {
-                GameObject.Find("CakeShopStay4").GetComponent<EmptyPlace>().IsEmpty = false;
+                GameObject.Find("CakeShopStay2").GetComponent<EmptyPlace>().IsEmpty = false;
                 return 1;
             }
 
@@ -280,17 +275,17 @@ public class NPC : MonoBehaviour
             {
                 return 1111;
             }
-        }
+        } 
         if (name == "DonutShop")
         {
-            if (GameObject.Find("DonutShopStay3").GetComponent<EmptyPlace>().IsEmpty)
+            if (GameObject.Find("DonutShopStay1").GetComponent<EmptyPlace>().IsEmpty)
             {
-                GameObject.Find("DonutShopStay3").GetComponent<EmptyPlace>().IsEmpty = false;
+                GameObject.Find("DonutShopStay1").GetComponent<EmptyPlace>().IsEmpty = false;
                 return 0;
             }
-            else if (GameObject.Find("DonutShopStay4").GetComponent<EmptyPlace>().IsEmpty)
+            else if (GameObject.Find("DonutShopStay2").GetComponent<EmptyPlace>().IsEmpty)
             {
-                GameObject.Find("DonutShopStay4").GetComponent<EmptyPlace>().IsEmpty = false;
+                GameObject.Find("DonutShopStay2").GetComponent<EmptyPlace>().IsEmpty = false;
                 return 1;
             }
 
@@ -298,17 +293,17 @@ public class NPC : MonoBehaviour
             {
                 return 1111;
             }
-        }
+        } 
         if (name == "MelonShop")
         {
-            if (GameObject.Find("MelonShopStay3").GetComponent<EmptyPlace>().IsEmpty)
+            if (GameObject.Find("MelonShopStay1").GetComponent<EmptyPlace>().IsEmpty)
             {
-                GameObject.Find("MelonShopStay3").GetComponent<EmptyPlace>().IsEmpty = false;
+                GameObject.Find("MelonShopStay1").GetComponent<EmptyPlace>().IsEmpty = false;
                 return 0;
             }
-            else if (GameObject.Find("MelonShopStay4").GetComponent<EmptyPlace>().IsEmpty)
+            else if (GameObject.Find("MelonShopStay2").GetComponent<EmptyPlace>().IsEmpty)
             {
-                GameObject.Find("MelonShopStay4").GetComponent<EmptyPlace>().IsEmpty = false;
+                GameObject.Find("MelonShopStay2").GetComponent<EmptyPlace>().IsEmpty = false;
                 return 1;
             }
 
@@ -322,49 +317,78 @@ public class NPC : MonoBehaviour
 
     IEnumerator ReturnTimer()
     {
-
+        
         yield return new WaitForSeconds(3f);
+         
+            SetTarget(new Vector3(this.transform.position.x, EndPos.position.y, 0));
 
-        SetTarget(new Vector3(this.transform.position.x, EndPos.position.y, 0));
-
-        switch (ReturnToNew)
-        {
-            case 1:
-                GameObject.Find("PieShopStay3").GetComponent<EmptyPlace>().IsEmpty = true; 
-                break;
-            case 2:
-                GameObject.Find("PieShopStay4").GetComponent<EmptyPlace>().IsEmpty = true; 
-                break;
-            case 3:
-                GameObject.Find("CookieShopStay3").GetComponent<EmptyPlace>().IsEmpty = true; 
-                break;
-            case 4:
-                GameObject.Find("CookieShopStay4").GetComponent<EmptyPlace>().IsEmpty = true;
-                break;
-            case 5:
-                GameObject.Find("CakeShopStay3").GetComponent<EmptyPlace>().IsEmpty = true;
-                break;
-            case 6:
-                GameObject.Find("CakeShopStay4").GetComponent<EmptyPlace>().IsEmpty = true;
-                break;
-            case 7:
-                GameObject.Find("DonutShopStay3").GetComponent<EmptyPlace>().IsEmpty = true;
-                break;
-            case 8:
-                GameObject.Find("DonutShopStay4").GetComponent<EmptyPlace>().IsEmpty = true;
-                break;
-            case 9:
-                GameObject.Find("MelonShopStay3").GetComponent<EmptyPlace>().IsEmpty = true;
-                break;
-            case 10:
-                GameObject.Find("MelonShopStay4").GetComponent<EmptyPlace>().IsEmpty = true;
+            switch (ReturnToNew)
+            {
+                case 1:
+                    GameObject.Find("PieShopStay1").GetComponent<EmptyPlace>().IsEmpty = true;
+                    yield return new WaitForSeconds(1.5f); 
+                    SetTarget(EndPos.transform.position);  
                 break;
 
-            default:
+                case 2:
+                    GameObject.Find("PieShopStay2").GetComponent<EmptyPlace>().IsEmpty = true;
+                    yield return new WaitForSeconds(1.5f);
+                 SetTarget(EndPos.transform.position);
                 break;
-        }
-        StopCoroutine("ReturnTimer");
 
+                case 3:
+                    GameObject.Find("CookieShopStay1").GetComponent<EmptyPlace>().IsEmpty = true;
+                  yield return new WaitForSeconds(1.5f);
+                   SetTarget(EndPos.transform.position); 
+                break;
+
+                case 4:
+                    GameObject.Find("CookieShopStay2").GetComponent<EmptyPlace>().IsEmpty = true;
+                    yield return new WaitForSeconds(1.5f);
+                    SetTarget(EndPos.transform.position);
+                break;
+
+                case 5:
+                    GameObject.Find("CakeShopStay1").GetComponent<EmptyPlace>().IsEmpty = true;
+                    yield return new WaitForSeconds(1.5f);
+                 SetTarget(EndPos.transform.position);
+                 break;
+
+                case 6:
+                    GameObject.Find("CakeShopStay2").GetComponent<EmptyPlace>().IsEmpty = true;
+                    yield return new WaitForSeconds(1.5f);
+                    SetTarget(EndPos.transform.position);
+                    break;
+
+                case 7:
+                    GameObject.Find("DonutShopStay1").GetComponent<EmptyPlace>().IsEmpty = true;
+                    yield return new WaitForSeconds(1.5f);
+                    SetTarget(EndPos.transform.position);
+                    break;
+
+                case 8:
+                    GameObject.Find("DonutShopStay2").GetComponent<EmptyPlace>().IsEmpty = true;
+                    yield return new WaitForSeconds(1.5f);
+                    SetTarget(EndPos.transform.position);
+                    break;
+
+                case 9:
+                    GameObject.Find("MelonShopStay1").GetComponent<EmptyPlace>().IsEmpty = true;
+                    yield return new WaitForSeconds(1.5f);
+                    SetTarget(EndPos.transform.position);
+                    break;
+
+                case 10:
+                    GameObject.Find("MelonShopStay2").GetComponent<EmptyPlace>().IsEmpty = true;
+                    yield return new WaitForSeconds(1.5f);
+                    SetTarget(EndPos.transform.position);
+                    break;
+               
+                default:
+                    break;
+            }
+            StopCoroutine("ReturnTimer");
+       
 
     }
 }

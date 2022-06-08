@@ -32,9 +32,9 @@ public class ShopManager : MonoBehaviour
         Shop1.IsWorking = Shop1Check;
         Shop2.IsWorking = Shop2Check;
         Shop3.IsWorking = Shop3Check;
-
     }
 
+    /*
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("NPC"))
@@ -74,5 +74,5 @@ public class ShopManager : MonoBehaviour
              
         }
     }
-    
+    */
 }
