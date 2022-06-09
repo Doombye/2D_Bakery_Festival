@@ -72,7 +72,7 @@ MonoBehaviour:
   initialSkinName: default
   initialFlipX: 0
   initialFlipY: 0
-  startingAnimation: walk
+  startingAnimation: dance
   startingLoop: 1
   timeScale: 1
   freeze: 0
@@ -106,12 +106,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da0264fa4374d847a1b893f223b01da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 150
   Destorytimer: 20
-<<<<<<< HEAD
+  percent: 10
   HaveTarget: 0
   TargetPos: {x: 0, y: 0, z: 0}
-  percent: 10
+  NpcType: 0
 --- !u!61 &7902548711364979954
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -159,5 +158,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
-=======
->>>>>>> 46b4b2ddbadf01c920a463fdfa1daa2945225af0

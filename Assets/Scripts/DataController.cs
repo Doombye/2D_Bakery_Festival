@@ -152,8 +152,7 @@ public class DataController : Singleton<DataController>
     }
     public void SetGoldPerSec()
     {
-        PlayerPrefs.SetInt("_isGoldPerSecSum", GetGoldPerSec());
-         
+        PlayerPrefs.SetInt("_isGoldPerSecSum", GetGoldPerSec());        
     }
 
 }

@@ -27,9 +27,9 @@ public class NPC_Spawner : MonoBehaviour
     {
         timer += Time.deltaTime;
         if (timer >= spawnTime)
-        {
-            Debug.Log("손님 생산");
-            Instantiate(prefab, pivot.position, Quaternion.Euler(0,180,0), GameObject.Find("Canvas").transform);
+        { 
+            //UI버튼이 가장 위에 보이도록 canvas 안에 NPCGroups이라는 곳 안에 생성을 함
+            Instantiate(prefab, pivot.position, Quaternion.Euler(0,180,0), GameObject.Find("NpcGroups").transform);
             timer = 0;
             count++;
         }

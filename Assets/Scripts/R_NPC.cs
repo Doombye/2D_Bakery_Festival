@@ -9,38 +9,25 @@ public class R_NPC : MonoBehaviour
 
 
     Transform EndPos;
-<<<<<<< HEAD
     public bool HaveTarget = false;
     Vector3 TargetPos;
 
-=======
->>>>>>> 46b4b2ddbadf01c920a463fdfa1daa2945225af0
     Rigidbody2D rigid;
 
     float lifeTimer;
-
-<<<<<<< HEAD
-    int ReturnT = 0;
+     
 
     int ReturnToNew = 99999;
     int ReturnTempNum = 99991;
-=======
-
->>>>>>> 46b4b2ddbadf01c920a463fdfa1daa2945225af0
     private void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         EndPos = GameObject.FindGameObjectWithTag("R_End").GetComponent<Transform>();
-<<<<<<< HEAD
         
-=======
-
->>>>>>> 46b4b2ddbadf01c920a463fdfa1daa2945225af0
     }
 
     void Update()
     {
-<<<<<<< HEAD
         if(!HaveTarget) 
         SetTarget(EndPos.transform.position);
 
@@ -63,18 +50,6 @@ public class R_NPC : MonoBehaviour
         if (Vector2.Distance(transform.position, N) > 0.1f)
         {
             transform.position = Vector2.MoveTowards(transform.position, N, moveSpeed * Time.deltaTime);
-=======
-        GoTarget();
-        Destroy();
-        lifeTimer += Time.deltaTime;
-    }
-
-    void GoTarget()
-    {
-        if (Vector2.Distance(transform.position, EndPos.position) > 0.1f)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, EndPos.position, moveSpeed * Time.deltaTime);
->>>>>>> 46b4b2ddbadf01c920a463fdfa1daa2945225af0
         }
     }
 
@@ -84,7 +59,6 @@ public class R_NPC : MonoBehaviour
         {
             Destroy(gameObject);
         }
-<<<<<<< HEAD
         
     }
 
@@ -239,8 +213,7 @@ public class R_NPC : MonoBehaviour
 
         }
         if (collision.gameObject.CompareTag("StartTimer"))
-        {
-            ReturnT = 0;
+        { 
             StartCoroutine("ReturnTimer");
         }
     }
@@ -415,15 +388,5 @@ public class R_NPC : MonoBehaviour
             StopCoroutine("ReturnTimer");
        
 
-=======
-    }
-
-    void Destroy()
-    {
-        if (lifeTimer >= Destorytimer)
-        {
-            Destroy(gameObject);
-        }
->>>>>>> 46b4b2ddbadf01c920a463fdfa1daa2945225af0
     }
 }
