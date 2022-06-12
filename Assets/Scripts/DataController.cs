@@ -7,13 +7,23 @@ using System.Text;          // 다른 객체로 변환하기위해
 public class DataController : Singleton<DataController>
 {
     // 초당 수익 버튼 저장 배열
-    public GoldPerSecButton[] goldPerSecButtons;
+    public PerSecUpButton[] goldPerSecButtons;
     int sumValue;
 
     void Start()
     {
+        //StartCoroutine(AddGoldLoop());
         // 게임에 접속하지 않아도 시간이 흐른만큼 골드를 더해준다. (최대 3일 까지)
         Gold += PlayerPrefs.GetInt("_isGoldPerSecSum") * Mathf.Clamp(AfterTime(), 0, 260000);
+        InvokeRepeating("UpdateLastPlayDate", 0f, 10f);         // 10초마다 플레이 시간 저장.
+    }
+
+    private void Update()
+    {
+        Debug.Log("초당 수익 : " + PlayerPrefs.GetInt("_isGoldPerSecSum") + " 원");
+
+        goldPerSecButtons = FindObjectsOfType<PerSecUpButton>();
+        Debug.Log("초당 수익 함수 : " + GetGoldPerSec());
     }
 
     // 마지막 플레이 날짜
@@ -52,6 +62,7 @@ public class DataController : Singleton<DataController>
     private void OnApplicationQuit()
     {
         UpdateLastPlayDate();                           // 게임 종료시 플레이 타임 저장.
+        SetGoldPerSec();
     }
 
     // 현재 골드량
@@ -90,40 +101,63 @@ public class DataController : Singleton<DataController>
         }
     }
 
-    // 초당 수익 데이터 불러오기
-    public void LoadWorkButton(GoldPerSecButton itemButton)
+    // 업그레이드(클릭당 수익) 버튼데이터 불러오기
+    public void LoadUpgradeButton(ClickUpButton clickUpButton)
     {
-        string key = itemButton.itemName;
+        string key = clickUpButton.upgradeName;
 
         // 저장되있는 키값을 이용해서 데이터불러오기
-        itemButton.level = PlayerPrefs.GetInt(key + "_level");
-        itemButton.currentCost = PlayerPrefs.GetInt(key + "_cost", itemButton.startCurrentCost);
-        itemButton.goldPerCec = PlayerPrefs.GetInt(key + "_goldPerSec", itemButton.startGoldPerSec);
+        clickUpButton.level = PlayerPrefs.GetInt(key + "_level", 1);
+        clickUpButton.upgradeGold = PlayerPrefs.GetInt(key + "_upgradeGold", clickUpButton.startupgradeGold);
+        clickUpButton.currentCost = PlayerPrefs.GetInt(key + "_cost", clickUpButton.startcurrentCost);
+    }
+
+    // 업그레이드(클릭당 수익) 버튼 데이터 저장
+    public void SaveUpgradeButton(ClickUpButton clickUpButton)
+    {
+        string key = clickUpButton.upgradeName;
+
+        PlayerPrefs.SetInt(key + "_level", clickUpButton.level);                 // 키값(_level)으로 현재 level 을 저장.
+        PlayerPrefs.SetInt(key + "_upgradeGold", clickUpButton.upgradeGold);     // 키값(_upgradeGold)으로 현재 upgradeGold 를 저장. (업그레이드시 클릭당 증가비용)
+        PlayerPrefs.SetInt(key + "_cost", clickUpButton.currentCost);            // 키값(_cost)으로 현재 currentCost 를 저장. (구매비용)
+    }
+
+
+
+    // 초당 수익 데이터 불러오기
+    public void LoadWorkButton(PerSecUpButton perSecUpButton)
+    {
+        string key = perSecUpButton.itemName;
+
+        // 저장되있는 키값을 이용해서 데이터불러오기
+        perSecUpButton.level = PlayerPrefs.GetInt(key + "_level");
+        perSecUpButton.currentCost = PlayerPrefs.GetInt(key + "_cost", perSecUpButton.startCurrentCost);
+        perSecUpButton.goldPerCec = PlayerPrefs.GetInt(key + "_goldPerSec", perSecUpButton.startGoldPerSec);
 
         // isBuy : 구매 여부 확인
         // 아이템이 구매가 되어있다면 1, 아니면 0 으로 구매여부를 확인한 후 불러온다.
         if (PlayerPrefs.GetInt(key + "_isBuy") == 1)
         {
-            itemButton.isBuy = true;
+            perSecUpButton.isBuy = true;
         }
         else
         {
-            itemButton.isBuy = false;
+            perSecUpButton.isBuy = false;
         }
     }
 
     // 초당 수익 데이터 저장
-    public void SaveWorkButton(GoldPerSecButton itemButton)
+    public void SaveWorkButton(PerSecUpButton perSecUpButton)
     {
-        string key = itemButton.itemName;
+        string key = perSecUpButton.itemName;
 
-        PlayerPrefs.SetInt(key + "_level", itemButton.level);
-        PlayerPrefs.SetInt(key + "_cost", itemButton.currentCost);
-        PlayerPrefs.SetInt(key + "_goldPerSec", itemButton.goldPerCec);
+        PlayerPrefs.SetInt(key + "_level", perSecUpButton.level);
+        PlayerPrefs.SetInt(key + "_cost", perSecUpButton.currentCost);
+        PlayerPrefs.SetInt(key + "_goldPerSec", perSecUpButton.goldPerCec);
 
         // isBuy : 구매 여부 확인
         // 아이템이 구매가 되어있다면 1, 아니면 0 으로 구매여부를 확인한 후 저장한다.
-        if (itemButton.isBuy == true)
+        if (perSecUpButton.isBuy == true)
         {
             PlayerPrefs.SetInt(key + "_isBuy", 1);
         }
@@ -134,10 +168,7 @@ public class DataController : Singleton<DataController>
     }
 
 
-
-
-
-
+    // 초당 수익 총 합
     public int GetGoldPerSec()
     {
         // 초당 수익 합
@@ -154,5 +185,4 @@ public class DataController : Singleton<DataController>
     {
         PlayerPrefs.SetInt("_isGoldPerSecSum", GetGoldPerSec());        
     }
-
 }

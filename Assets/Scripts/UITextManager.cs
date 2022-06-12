@@ -8,14 +8,42 @@ public class UITextManager : MonoBehaviour
     [SerializeField] Text goldText;
     [SerializeField] Text rubyText;
     [SerializeField] Text goldPerSecText;
+    [SerializeField] CanvasRenderer panel;
 
+    int persecGold;
+
+    private void Start()
+    {
+        //OnPanel();   
+    }
 
     private void Update()
     {
-        goldText.text = string.Format("{0:#,###0}", DataController.Instance.Gold + "$");
+        persecGold = DataController.Instance.GetGoldPerSec();
+        goldText.text = string.Format("{0:#,###0}", DataController.Instance.Gold) + "$";
         // rubyText.text = "Ruby :" + string.Format("{0:#,###0}");
-        goldPerSecText.text = string.Format("{0:#,###0}", DataController.Instance.GetGoldPerSec()) + "/s";
+
+        
+        
+        if(panel.gameObject.activeSelf == true)
+        {
+            goldPerSecText.text = string.Format("{0:#,###0}", persecGold) + "/s";  
+        }
     }
+
+    void OnPanel()
+    {
+        panel.gameObject.SetActive(true);
+        panel.SetAlpha(0f);
+        Invoke("OffPanel", 0.5f);
+    }
+
+
+    void OffPanel()
+    {
+        panel.gameObject.SetActive(false);
+    }
+
 
     /*
     private string[] goldunit = new string[] { "", "만", "억", "경", "해", "자", "양", "가", "구", "간" };

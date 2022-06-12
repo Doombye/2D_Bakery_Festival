@@ -50,6 +50,7 @@ public class UIButtonManager : MonoBehaviour
         }
     }
 
+
     public void PanelActivities(int Key)
     {
         for (int i = 0; i < 6; i++)
