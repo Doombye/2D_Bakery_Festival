@@ -831,7 +831,7 @@ MonoBehaviour:
   m_Content: {fileID: 1283666513}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -1112,7 +1112,7 @@ MonoBehaviour:
   m_Content: {fileID: 330923119}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -3991,9 +3991,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 972732590}
-        m_TargetAssemblyTypeName: UIButtonManager, Assembly-CSharp
-        m_MethodName: SecondButPress
+      - m_Target: {fileID: 1294642345}
+        m_TargetAssemblyTypeName: MainSecondPanel, Assembly-CSharp
+        m_MethodName: SecondPanelOnOff
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4871,7 +4871,7 @@ MonoBehaviour:
   m_Content: {fileID: 42837229}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -5408,7 +5408,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Panels:
   - {fileID: 1502528512}
-  - {fileID: 1294642338}
   - {fileID: 1947931541}
   - {fileID: 190529282}
   - {fileID: 853704219}
@@ -7343,6 +7342,8 @@ GameObject:
   - component: {fileID: 1294642342}
   - component: {fileID: 1294642341}
   - component: {fileID: 1294642340}
+  - component: {fileID: 1294642344}
+  - component: {fileID: 1294642345}
   m_Layer: 5
   m_Name: SecondPanel
   m_TagString: Untagged
@@ -7367,7 +7368,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 531, y: -10}
+  m_AnchoredPosition: {x: 1500, y: -10}
   m_SizeDelta: {x: 450, y: 690}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1294642340
@@ -7398,7 +7399,7 @@ MonoBehaviour:
   m_Content: {fileID: 274796230}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -7412,7 +7413,19 @@ MonoBehaviour:
   m_VerticalScrollbarSpacing: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1294642338}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1294642342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7451,6 +7464,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294642338}
   m_CullTransparentMesh: 1
+--- !u!95 &1294642344
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294642338}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e965b5c71d87b1942abca558829c5fb3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1294642345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294642338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 291a674feb5921a4da44b6570601cf85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1297111637
 GameObject:
   m_ObjectHideFlags: 0
@@ -8869,7 +8913,7 @@ MonoBehaviour:
   m_Content: {fileID: 752904194}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -11841,7 +11885,7 @@ MonoBehaviour:
   m_Content: {fileID: 1740098074}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
