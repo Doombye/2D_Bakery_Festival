@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UITextManager : MonoBehaviour
 {
+    [SerializeField] Text userName;
     [SerializeField] Text goldText;
     [SerializeField] Text rubyText;
     [SerializeField] Text goldPerSecText;
@@ -21,6 +22,7 @@ public class UITextManager : MonoBehaviour
     {
         persecGold = DataController.Instance.GetGoldPerSec();
         goldText.text = string.Format("{0:#,###0}", DataController.Instance.Gold) + "$";
+        userName.text = PlayerPrefs.GetString("Name").ToString();
         // rubyText.text = "Ruby :" + string.Format("{0:#,###0}");
 
         
@@ -43,6 +45,8 @@ public class UITextManager : MonoBehaviour
     {
         panel.gameObject.SetActive(false);
     }
+
+
 
 
     /*

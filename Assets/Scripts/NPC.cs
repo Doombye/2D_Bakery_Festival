@@ -9,10 +9,10 @@ public class NPC : MonoBehaviour
 
     [SerializeField] float percent; // 캐릭터 이동 비율 퍼센트
     Transform UpNpcPos;
-    
+
     Transform EndPos;
     public bool HaveTarget = false;
-    [SerializeField]Vector3 TargetPos;
+    [SerializeField] Vector3 TargetPos;
 
     Rigidbody2D rigid;
 
@@ -26,10 +26,14 @@ public class NPC : MonoBehaviour
     //상점에 다가간후 다시 들어갈수있는 곳이라는 것을 나타내기 위한 함수
     int ReturnToNew = 99999;
     int ReturnTempNum = 99991;
+
+    //Festival을 컨트롤 하기위한 소환
+    FestivalManager festivalMng;
+
     private void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
-
+        festivalMng = GameObject.Find("DataController").GetComponent<FestivalManager>();
         //EndPos 안에 끝지점을 정해줄 Transform 을 집어넣는다
         EndPos = GameObject.FindGameObjectWithTag("L_End").GetComponent<Transform>();
         //R_end가 tag중에 사용안되고 남는 상황이 되어 재사용겸 사용
@@ -48,7 +52,7 @@ public class NPC : MonoBehaviour
         MoveToTarget(TargetPos);
 
         lifeTimer += Time.deltaTime;
-        if(NpcType == 2)
+        if (NpcType == 2)
         {
             if (this.transform.position.y == EndPos.transform.position.y)
             {
@@ -62,7 +66,7 @@ public class NPC : MonoBehaviour
                 SetTarget(EndPos.transform.position);
             }
         }
-        
+
     }
     // 해당 Vector3 위치로 타겟을 지정해 주는 역활
     void SetTarget(Vector3 N)
@@ -84,6 +88,7 @@ public class NPC : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("L_End"))
         {
+            festivalMng.DeletedNpc();
             Destroy(this.gameObject);
         }
 
@@ -93,11 +98,11 @@ public class NPC : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //아랫줄에서 소환되는지 위에서 소환되는지를 구분하기 위한 NpcType
-        if(collision.gameObject.name =="NpcSpawner1")
+        if (collision.gameObject.name == "NpcSpawner1")
         {
             NpcType = 1;
         }
-        if(collision.gameObject.name =="NpcSpawner2")
+        if (collision.gameObject.name == "NpcSpawner2")
         {
             NpcType = 2;
         }
@@ -266,10 +271,10 @@ public class NPC : MonoBehaviour
             }
 
         }
-        
+
         //상점에 들어간 후 카운트 들어가는 코루틴 실행
         if (collision.gameObject.CompareTag("StartTimer"))
-        { 
+        {
             StartCoroutine("ReturnTimer");
         }
     }
@@ -279,7 +284,7 @@ public class NPC : MonoBehaviour
         /*
         아래의 코드는 고유번호의 차이말고는 똑같은 코드이기에 맨위의 파이상점의 코드에 상세 코드를 기록해놓았습니다. 
         */
-        
+
         //받아온 string이 파이상점이라면 
         if (name == "PieShop")
         {
@@ -404,13 +409,13 @@ public class NPC : MonoBehaviour
         switch (ReturnToNew)
         {
             case 1:
-                GameObject.Find("PieShopStay3").GetComponent<EmptyPlace>().IsEmpty = true; 
+                GameObject.Find("PieShopStay3").GetComponent<EmptyPlace>().IsEmpty = true;
                 break;
             case 2:
-                GameObject.Find("PieShopStay4").GetComponent<EmptyPlace>().IsEmpty = true; 
+                GameObject.Find("PieShopStay4").GetComponent<EmptyPlace>().IsEmpty = true;
                 break;
             case 3:
-                GameObject.Find("CookieShopStay3").GetComponent<EmptyPlace>().IsEmpty = true; 
+                GameObject.Find("CookieShopStay3").GetComponent<EmptyPlace>().IsEmpty = true;
                 break;
             case 4:
                 GameObject.Find("CookieShopStay4").GetComponent<EmptyPlace>().IsEmpty = true;

@@ -1,0 +1,55 @@
+
+clerk_girl.png
+size: 1218,320
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+down_body
+  rotate: false
+  xy: 790, 22
+  size: 223, 296
+  orig: 266, 299
+  offset: 41, 2
+  index: -1
+eye
+  rotate: true
+  xy: 1158, 159
+  size: 159, 58
+  orig: 164, 60
+  offset: 2, 1
+  index: -1
+left_arm
+  rotate: true
+  xy: 1015, 179
+  size: 139, 141
+  orig: 141, 143
+  offset: 1, 1
+  index: -1
+right_arm
+  rotate: false
+  xy: 1015, 2
+  size: 108, 175
+  orig: 119, 179
+  offset: 1, 3
+  index: -1
+roller
+  rotate: true
+  xy: 1125, 14
+  size: 143, 83
+  orig: 146, 85
+  offset: 1, 1
+  index: -1
+up_body
+  rotate: true
+  xy: 2, 11
+  size: 307, 538
+  orig: 307, 538
+  offset: 0, 0
+  index: -1
+wood
+  rotate: true
+  xy: 542, 3
+  size: 315, 246
+  orig: 317, 248
+  offset: 1, 1
+  index: -1

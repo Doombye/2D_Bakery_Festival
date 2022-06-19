@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;               // dataTime »ç¿ëÇÏ±â À§ÇØ
 using System.Text;          // ´Ù¸¥ °´Ã¼·Î º¯È¯ÇÏ±âÀ§ÇØ
+using System.Text.RegularExpressions;
 
 public class DataController : Singleton<DataController>
 {
@@ -184,5 +185,36 @@ public class DataController : Singleton<DataController>
     public void SetGoldPerSec()
     {
         PlayerPrefs.SetInt("_isGoldPerSecSum", GetGoldPerSec());        
+    }
+
+
+    // Á¤±ÔÈ­·Î Æ¯Á¤ ¹®ÀÚ·Î¸¸ ´Ð³×ÀÓÀ» ¸¸µé ¼ö ÀÖ°Ô ÇÑ´Ù.
+    public bool CheckName()
+    {
+        return Regex.IsMatch(MakeNewName.Instance.playerNameInput.text, "^[0-9a-zA-Z°¡-ÆR]*$");
+    }
+
+    // ÀÌ¸§ ÀúÀå
+    public void SaveName()
+    {
+
+        MakeNewName.Instance.isFirstLogin = false;
+        PlayerPrefs.SetString("Name", MakeNewName.Instance.playerNameInput.text);
+        if(PlayerPrefs.GetString("Name").Length > 0)
+        {
+            PlayerPrefs.SetInt("Panel", 1);
+            MakeNewName.Instance.FirstPanel();
+        }
+        else
+        {
+            Debug.Log("´Ð³×ÀÓÀ» ÀÔ·ÂÇÏ¼¼¿ä");
+            return;
+        }
+    }
+
+    // ÀÌ¸§ ºÒ·¯¿À±â
+    public void LoadName()
+    {
+        MakeNewName.Instance.playerNameInput.text = PlayerPrefs.GetString("Name");
     }
 }

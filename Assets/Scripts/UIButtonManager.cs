@@ -7,34 +7,41 @@ public class UIButtonManager : MonoBehaviour
     public GameObject[] Panels = new GameObject[6];
     private int Key = 0;
     private bool IsActive = false;
+
+
+
     public void FirstButPress()
     {
         Key = 0;
         CheckActive(Key);
     }
+    /*
     public void SecondButPress()
     {
         Key =1;
         CheckActive(Key);
     }
+    */
+
+
     public void ThirdButPress()
     {
-        Key =2;
+        Key =1;
         CheckActive(Key);
     }
     public void FourthButPress()
     {
-        Key = 3;
+        Key = 2;
         CheckActive(Key);
     }
     public void FifthButPress()
     {
-        Key = 4;
+        Key = 3;
         CheckActive(Key);
     }
     public void SixthButPress()
     {
-        Key = 5;
+        Key = 4;
         CheckActive(Key);
     }
 
@@ -42,7 +49,9 @@ public class UIButtonManager : MonoBehaviour
     {
         if( Panels[key].activeSelf == true)
         {
+            
             Panels[key].SetActive(false);
+
         }
         else
         {
@@ -53,7 +62,7 @@ public class UIButtonManager : MonoBehaviour
 
     public void PanelActivities(int Key)
     {
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 5; i++)
         {
             if(i == Key)
             {
