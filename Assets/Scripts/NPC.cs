@@ -4,24 +4,25 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
+    //페스티벌이벤트가 시작되었는지 알기위한 Bool
+    public bool IsFestivalNow = false;
+
     [SerializeField] float Destorytimer;
     //위에서 스폰된 NPC가 돌아가기위한 Y좌표를 받기위한 transform
 
     [SerializeField] float percent; // 캐릭터 이동 비율 퍼센트
-    Transform UpNpcPos;
-
-    Transform EndPos;
-    public bool HaveTarget = false;
     [SerializeField] Vector3 TargetPos;
+    [SerializeField] int NpcType = 0;
 
-    Rigidbody2D rigid;
+    Transform UpNpcPos;
+    Transform EndPos;
 
-    float lifeTimer;
+    public bool HaveTarget = false;
+    float DoubleMoveSpeed;
+    float DefaultmoveSpeed;
     float moveSpeed;
-
     int width = Screen.width;       // 가로 해상도
 
-    [SerializeField] int NpcType = 0;
 
     //상점에 다가간후 다시 들어갈수있는 곳이라는 것을 나타내기 위한 함수
     int ReturnToNew = 99999;
@@ -31,41 +32,52 @@ public class NPC : MonoBehaviour
     FestivalManager festivalMng;
 
     private void Start()
-    {
-        rigid = GetComponent<Rigidbody2D>();
+    { 
         festivalMng = GameObject.Find("DataController").GetComponent<FestivalManager>();
         //EndPos 안에 끝지점을 정해줄 Transform 을 집어넣는다
         EndPos = GameObject.FindGameObjectWithTag("L_End").GetComponent<Transform>();
         //R_end가 tag중에 사용안되고 남는 상황이 되어 재사용겸 사용
         UpNpcPos = GameObject.FindGameObjectWithTag("R_End").GetComponent<Transform>();
 
-        moveSpeed = (width * percent) / 100;
+        DefaultmoveSpeed = (width * percent) / 100;
+        DoubleMoveSpeed = (width * percent) / 40;
     }
 
     void Update()
     {
-
-        //만약 타겟을 가지지 않았다면 EndPos위치로 타겟을 설정
-        if (!HaveTarget)
-            SetTarget(EndPos.transform.position);
-        //
-        MoveToTarget(TargetPos);
-
-        lifeTimer += Time.deltaTime;
-        if (NpcType == 2)
+        //축제이벤트가 실행이 되면 모든것을 멈추고 오른쪽으로 빠르게 이동 
+        IsFestivalNow = GameObject.Find("DataController").GetComponent<FestivalManager>().IsFestival;
+        if(IsFestivalNow)
         {
-            if (this.transform.position.y == EndPos.transform.position.y)
-            {
-                SetTarget(EndPos.transform.position);
-            }
+            SetTarget(EndPos.transform.position);
+            MoveToTarget(TargetPos);
+            moveSpeed = DoubleMoveSpeed;
         }
         else
         {
-            if (this.transform.position.y == UpNpcPos.transform.position.y)
-            {
+            moveSpeed = DefaultmoveSpeed;
+            //만약 타겟을 가지지 않았다면 EndPos위치로 타겟을 설정
+            if (!HaveTarget)
                 SetTarget(EndPos.transform.position);
+            //
+            MoveToTarget(TargetPos);
+
+            if (NpcType == 2)
+            {
+                if (this.transform.position.y == EndPos.transform.position.y)
+                {
+                    SetTarget(EndPos.transform.position);
+                }
+            }
+            else
+            {
+                if (this.transform.position.y == UpNpcPos.transform.position.y)
+                {
+                    SetTarget(EndPos.transform.position);
+                }
             }
         }
+        
 
     }
     // 해당 Vector3 위치로 타겟을 지정해 주는 역활
@@ -141,6 +153,14 @@ public class NPC : MonoBehaviour
                         //그 자리가 가진 고유 번호 
                         ReturnToNew = 2;
                         break;
+                    case 2:
+                        //T1이라는 함수에 남아있는 자리의 위치를 받아온다.
+                        T1 = GameObject.FindGameObjectWithTag("PieShopStay5").GetComponent<Transform>();
+                        //Target을 T1이라는 함수로 바꾼다
+                        SetTarget(T1.transform.position);
+                        //그 자리가 가진 고유 번호 
+                        ReturnToNew = 11;
+                        break;
                     case 99:
                         break;
                     default:
@@ -172,6 +192,11 @@ public class NPC : MonoBehaviour
                         SetTarget(T1.transform.position);
                         ReturnToNew = 4;
                         break;
+                    case 2:
+                        T1 = GameObject.FindGameObjectWithTag("CookieShopStay5").GetComponent<Transform>();
+                        SetTarget(T1.transform.position);
+                        ReturnToNew = 12;
+                        break;
                     default:
                         break;
                 }
@@ -201,6 +226,11 @@ public class NPC : MonoBehaviour
                         T1 = GameObject.FindGameObjectWithTag("CakeShopStay4").GetComponent<Transform>();
                         SetTarget(T1.transform.position);
                         ReturnToNew = 6;
+                        break;
+                    case 2:
+                        T1 = GameObject.FindGameObjectWithTag("CakeShopStay5").GetComponent<Transform>();
+                        SetTarget(T1.transform.position);
+                        ReturnToNew = 13;
                         break;
                     default:
                         break;
@@ -232,6 +262,12 @@ public class NPC : MonoBehaviour
                         SetTarget(T1.transform.position);
                         ReturnToNew = 8;
                         break;
+
+                    case 2:
+                        T1 = GameObject.FindGameObjectWithTag("DonutShopStay5").GetComponent<Transform>();
+                        SetTarget(T1.transform.position);
+                        ReturnToNew = 14;
+                        break;
                     default:
                         break;
                 }
@@ -261,6 +297,11 @@ public class NPC : MonoBehaviour
                         T1 = GameObject.FindGameObjectWithTag("MelonShopStay4").GetComponent<Transform>();
                         SetTarget(T1.transform.position);
                         ReturnToNew = 10;
+                        break;
+                    case 2:
+                        T1 = GameObject.FindGameObjectWithTag("MelonShopStay5").GetComponent<Transform>();
+                        SetTarget(T1.transform.position);
+                        ReturnToNew = 15;
                         break;
                     default:
                         break;
@@ -303,6 +344,13 @@ public class NPC : MonoBehaviour
                 //1을 리턴시켜준다 이후 스위치문에서 사용
                 return 1;
             }
+            else if (GameObject.Find("PieShopStay5").GetComponent<EmptyPlace>().IsEmpty)
+            {
+                //있다면 이젠 비어있지않다라고 설정후
+                GameObject.Find("PieShopStay5").GetComponent<EmptyPlace>().IsEmpty = false;
+                //1을 리턴시켜준다 이후 스위치문에서 사용
+                return 2;
+            }
             //비어있지않다면 1111리턴
             else
             {
@@ -322,7 +370,11 @@ public class NPC : MonoBehaviour
                 GameObject.Find("CookieShopStay4").GetComponent<EmptyPlace>().IsEmpty = false;
                 return 1;
             }
-
+            else if (GameObject.Find("CookieShopStay5").GetComponent<EmptyPlace>().IsEmpty)
+            {
+                GameObject.Find("CookieShopStay5").GetComponent<EmptyPlace>().IsEmpty = false;
+                return 2;
+            }
             else
             {
                 return 1111;
@@ -341,7 +393,11 @@ public class NPC : MonoBehaviour
                 GameObject.Find("CakeShopStay4").GetComponent<EmptyPlace>().IsEmpty = false;
                 return 1;
             }
-
+            else if (GameObject.Find("CakeShopStay5").GetComponent<EmptyPlace>().IsEmpty)
+            {
+                GameObject.Find("CakeShopStay5").GetComponent<EmptyPlace>().IsEmpty = false;
+                return 2;
+            }
             else
             {
                 return 1111;
@@ -360,7 +416,11 @@ public class NPC : MonoBehaviour
                 GameObject.Find("DonutShopStay4").GetComponent<EmptyPlace>().IsEmpty = false;
                 return 1;
             }
-
+            else if (GameObject.Find("DonutShopStay5").GetComponent<EmptyPlace>().IsEmpty)
+            {
+                GameObject.Find("DonutShopStay5").GetComponent<EmptyPlace>().IsEmpty = false;
+                return 2;
+            }
             else
             {
                 return 1111;
@@ -379,7 +439,11 @@ public class NPC : MonoBehaviour
                 GameObject.Find("MelonShopStay4").GetComponent<EmptyPlace>().IsEmpty = false;
                 return 1;
             }
-
+            else if (GameObject.Find("MelonShopStay5").GetComponent<EmptyPlace>().IsEmpty)
+            {
+                GameObject.Find("MelonShopStay5").GetComponent<EmptyPlace>().IsEmpty = false;
+                return 2;
+            }
             else
             {
                 return 1111;
@@ -438,7 +502,21 @@ public class NPC : MonoBehaviour
             case 10:
                 GameObject.Find("MelonShopStay4").GetComponent<EmptyPlace>().IsEmpty = true;
                 break;
-
+            case 11:
+                GameObject.Find("PieShopStay5").GetComponent<EmptyPlace>().IsEmpty = true;
+                break;
+            case 12:
+                GameObject.Find("CookieShopStay5").GetComponent<EmptyPlace>().IsEmpty = true;
+                break;
+            case 13:
+                GameObject.Find("CakeShopStay5").GetComponent<EmptyPlace>().IsEmpty = true;
+                break;
+            case 14:
+                GameObject.Find("DonutShopStay5").GetComponent<EmptyPlace>().IsEmpty = true;
+                break;
+            case 15:
+                GameObject.Find("MelonShopStay5").GetComponent<EmptyPlace>().IsEmpty = true;
+                break;
             default:
                 break;
         }

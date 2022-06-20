@@ -13,7 +13,7 @@ public class FestivalManager : MonoBehaviour
     //축제가 열리기 위한 NPC 갯수
     [SerializeField] int FestivalCount = 0;
     //축제중인지 알기 위한 함수
-    [SerializeField] bool IsFestival = false;
+    public bool IsFestival = false;
 
     //축제 타이머 
     float FestivalTime = 0;
@@ -38,7 +38,6 @@ public class FestivalManager : MonoBehaviour
     void SpawnTheNpc()
     {
         TouchCounter = 0;
-        FestivalCount++;
         if (FestivalCount == 10)
         {
             IsFestival = true;
@@ -50,10 +49,12 @@ public class FestivalManager : MonoBehaviour
             if (SpawnType == true)
             {
                 DownSpawner.Spawn();
+                FestivalCount++;
             }
             else
             {
                 UpSpawner.Spawn();
+                FestivalCount++;
             }
             SpawnType = !SpawnType;
         }

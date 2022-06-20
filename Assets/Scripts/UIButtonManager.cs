@@ -8,73 +8,102 @@ public class UIButtonManager : MonoBehaviour
     private int Key = 0;
     private bool IsActive = false;
 
-
+    
+    //2번을 눌렀을때 그전에 누른 키와 지금 켜져있는지를 확인하기 위한 함수
+    bool SecondPanelHasActives = false;
+    MainSecondPanel secondPanelControll;
 
     public void FirstButPress()
     {
-        Key = 0;
+        GameObject.Find("SecondPanel").GetComponent<MainSecondPanel>().SecondPanelOff();
+        Key =1; 
         CheckActive(Key);
     }
-    /*
     public void SecondButPress()
     {
-        Key =1;
+        GameObject.Find("SecondPanel").GetComponent<MainSecondPanel>().SecondPanelOff();
+        //이키는 나머지는 모두 끄게 만들것
+        Key = 2;  
         CheckActive(Key);
     }
-    */
-
-
-    public void ThirdButPress()
+    public void ThirdPress()
     {
-        Key =1;
+        GameObject.Find("SecondPanel").GetComponent<MainSecondPanel>().SecondPanelOff();
+        Key = 3;  
         CheckActive(Key);
     }
-    public void FourthButPress()
+    public void FourthPress()
     {
-        Key = 2;
-        CheckActive(Key);
-    }
-    public void FifthButPress()
-    {
-        Key = 3;
-        CheckActive(Key);
-    }
-    public void SixthButPress()
-    {
-        Key = 4;
+        GameObject.Find("SecondPanel").GetComponent<MainSecondPanel>().SecondPanelOff();
+        Key =4;  
         CheckActive(Key);
     }
 
-    public void CheckActive(int key)
+    public void CheckActive(int _Key)
     {
-        if( Panels[key].activeSelf == true)
+        if (_Key == 2)
         {
             
-            Panels[key].SetActive(false);
-
+            PanelActivities(_Key);
+           
         }
         else
         {
-            PanelActivities(Key);
-        }
-    }
-
-
-    public void PanelActivities(int Key)
-    {
-        for (int i = 0; i < 5; i++)
-        {
-            if(i == Key)
+            if (Panels[_Key - 1].activeSelf == true)
             {
-                Panels[i].SetActive(true);
-                Debug.Log(i + "번째 패널 켜기 완료!"); 
+
+                Panels[_Key - 1].SetActive(false);
+
             }
             else
             {
-                Panels[i].SetActive(false); 
+                PanelActivities(_Key);
             }
-            
         }
+
+       
+        
+    }
+
+
+    public void PanelActivities(int __Key)
+    {
+        if (__Key == 2)
+        {
+           
+            for (int i = 0; i < 5; i++)
+            { 
+                if (i == 1) {
+                     
+                }
+                else
+                {
+                    Panels[i].SetActive(false);
+                }            
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                if (i == 1)
+                {
+
+                }
+                else
+                {
+                    if (i == __Key - 1)
+                    {
+                        Panels[i].SetActive(true);
+                        Debug.Log(i + "번째 패널 켜기 완료!");
+                    }
+                    
+                }
+
+
+            }
+        }
+        
     }
 
 }

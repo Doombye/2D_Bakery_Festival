@@ -23,7 +23,7 @@ public class UITextManager : MonoBehaviour
         persecGold = DataController.Instance.GetGoldPerSec();
         goldText.text = string.Format("{0:#,###0}", DataController.Instance.Gold) + "$";
         userName.text = PlayerPrefs.GetString("Name").ToString();
-        // rubyText.text = "Ruby :" + string.Format("{0:#,###0}");
+        rubyText.text = string.Format("{0:#,###0}", DataController.Instance.Ruby);
 
         
         

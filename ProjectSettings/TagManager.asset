@@ -36,6 +36,11 @@ TagManager:
   - DonutShopStay4
   - MelonShopStay3
   - MelonShopStay4
+  - CookieShopStay5
+  - PieShopStay5
+  - DonutShopStay5
+  - MelonShopStay5
+  - CakeShopStay5
   layers:
   - Default
   - TransparentFX

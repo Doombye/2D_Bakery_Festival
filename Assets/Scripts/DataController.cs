@@ -88,6 +88,27 @@ public class DataController : Singleton<DataController>
         }
     }
 
+    // 현재 루비
+    public long Ruby
+    {
+        get
+        {
+            // 루비가 저장되어 있는지 확인
+            if (!PlayerPrefs.HasKey("Ruby"))
+            {
+                return 0;
+            }
+
+            string Luby = PlayerPrefs.GetString("Ruby");
+            // 루피 전달.
+            return long.Parse(Luby);
+        }
+        set
+        {
+            PlayerPrefs.SetString("Luby", value.ToString());
+        }
+    }
+
     public int ClickGold
     {
         get

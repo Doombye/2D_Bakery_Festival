@@ -5,7 +5,7 @@ using UnityEngine;
 public class MainSecondPanel : MonoBehaviour
 {
 
-    bool isOn;
+    public bool isOn;
 
     Animator anim;
 
@@ -26,5 +26,10 @@ public class MainSecondPanel : MonoBehaviour
             isOn = false;
             anim.Play("Off");
         }
+    }
+    public void SecondPanelOff()
+    {
+        isOn = false;
+        anim.Play("Off");
     }
 }
