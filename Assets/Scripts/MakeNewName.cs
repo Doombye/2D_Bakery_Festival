@@ -37,13 +37,9 @@ public class MakeNewName : Singleton<MakeNewName>
             makeNamePanel.SetActive(false);
         }
     }
-   
-
     public void PanelOnOff()
     {
         Debug.Log(value);
-
-
 
         if (value == true)
         {
