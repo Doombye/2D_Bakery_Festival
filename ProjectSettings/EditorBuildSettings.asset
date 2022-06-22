@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/UIScene.unity
+    path: Assets/Scenes/Title.unity
+    guid: 365d9f9dd1120a244aebcf68bed5c8f9
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/RouletteScene.unity
+    guid: f380a6f8c4eaf804b901f73a4506ed99
+  - enabled: 1
+    path: Assets/Scenes/DropFoods.unity
+    guid: 41264a7d5b4d0364b869ff2200bd9da4
   m_configObjects: {}

@@ -1,0 +1,40 @@
+{"skeleton":{"images":""},
+"bones":[{"name":"root"}],
+"slots":[
+	{"name":"tail","bone":"root","attachment":"tail"},
+	{"name":"clothes","bone":"root","attachment":"clothes"},
+	{"name":"l_leg","bone":"root","attachment":"l_leg"},
+	{"name":"r_leg","bone":"root","attachment":"r_leg"},
+	{"name":"clothes_in","bone":"root","attachment":"clothes_in"},
+	{"name":"l_arm_stick","bone":"root","attachment":"l_arm_stick"},
+	{"name":"hat_haed_skin","bone":"root","attachment":"hat_haed_skin"},
+	{"name":"mouth","bone":"root","attachment":"mouth"},
+	{"name":"r_arm","bone":"root","attachment":"r_arm"},
+	{"name":"up_cloth","bone":"root","attachment":"up_cloth"},
+	{"name":"lens","bone":"root","attachment":"lens"},
+	{"name":"r_eye","bone":"root","attachment":"r_eye"},
+	{"name":"l_eye","bone":"root","attachment":"l_eye"},
+	{"name":"l_ear","bone":"root","attachment":"l_ear"},
+	{"name":"r_ear","bone":"root","attachment":"r_ear"}
+],
+"skins":{
+	"default":{
+		"r_ear":{"r_ear":{"x":589,"y":754,"width":80,"height":144}},
+		"l_ear":{"l_ear":{"x":394.5,"y":766.5,"width":75,"height":131}},
+		"l_eye":{"l_eye":{"x":413,"y":614,"width":56,"height":50}},
+		"r_eye":{"r_eye":{"x":517,"y":605.5,"width":70,"height":47}},
+		"lens":{"lens":{"x":539.5,"y":572,"width":133,"height":218}},
+		"up_cloth":{"up_cloth":{"x":544,"y":345,"width":202,"height":358}},
+		"r_arm":{"r_arm":{"x":463,"y":459,"width":132,"height":198}},
+		"mouth":{"mouth":{"x":454.5,"y":555.5,"width":37,"height":19}},
+		"hat_haed_skin":{"hat_haed_skin":{"x":499.5,"y":679,"width":269,"height":382}},
+		"l_arm_stick":{"l_arm_stick":{"x":336,"y":242.5,"width":54,"height":273}},
+		"clothes_in":{"clothes_in":{"x":413.5,"y":430,"width":227,"height":204}},
+		"r_leg":{"r_leg":{"x":515.5,"y":247.5,"width":143,"height":281}},
+		"l_leg":{"l_leg":{"x":460,"y":242,"width":84,"height":270}},
+		"clothes":{"clothes":{"x":360,"y":283.5,"width":136,"height":199}},
+		"tail":{"tail":{"x":702,"y":364,"width":168,"height":216}}
+	}
+},
+"animations":{"animation":{}}
+}

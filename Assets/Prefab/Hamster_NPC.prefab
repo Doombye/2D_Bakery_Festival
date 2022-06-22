@@ -73,7 +73,7 @@ MonoBehaviour:
   initialFlipX: 0
   initialFlipY: 0
   startingAnimation: walk
-  startingLoop: 0
+  startingLoop: 1
   timeScale: 1
   freeze: 0
   updateWhenInvisible: 3
@@ -153,8 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da0264fa4374d847a1b893f223b01da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsFestivalNow: 0
   Destorytimer: 20
   percent: 10
-  HaveTarget: 0
   TargetPos: {x: 0, y: 0, z: 0}
   NpcType: 0
+  HaveTarget: 0
