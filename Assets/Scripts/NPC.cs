@@ -49,6 +49,25 @@ public class NPC : MonoBehaviour
         IsFestivalNow = GameObject.Find("DataController").GetComponent<FestivalManager>().IsFestival;
         if(IsFestivalNow)
         {
+
+            //축제가 되었을때 다시 비어있는 상태라고 설정 해주는 것.
+            GameObject.Find("PieShopStay3").GetComponent<EmptyPlace>().IsEmpty = true;
+            GameObject.Find("PieShopStay4").GetComponent<EmptyPlace>().IsEmpty = true;
+            GameObject.Find("CookieShopStay3").GetComponent<EmptyPlace>().IsEmpty = true;
+            GameObject.Find("CookieShopStay4").GetComponent<EmptyPlace>().IsEmpty = true;
+            GameObject.Find("CakeShopStay3").GetComponent<EmptyPlace>().IsEmpty = true;
+            GameObject.Find("CakeShopStay4").GetComponent<EmptyPlace>().IsEmpty = true;
+            GameObject.Find("DonutShopStay3").GetComponent<EmptyPlace>().IsEmpty = true;
+            GameObject.Find("DonutShopStay4").GetComponent<EmptyPlace>().IsEmpty = true;
+            GameObject.Find("MelonShopStay3").GetComponent<EmptyPlace>().IsEmpty = true;
+            GameObject.Find("MelonShopStay4").GetComponent<EmptyPlace>().IsEmpty = true;
+            GameObject.Find("PieShopStay5").GetComponent<EmptyPlace>().IsEmpty = true;
+            GameObject.Find("CookieShopStay5").GetComponent<EmptyPlace>().IsEmpty = true;
+            GameObject.Find("CakeShopStay5").GetComponent<EmptyPlace>().IsEmpty = true;
+            GameObject.Find("DonutShopStay5").GetComponent<EmptyPlace>().IsEmpty = true;
+            GameObject.Find("MelonShopStay5").GetComponent<EmptyPlace>().IsEmpty = true;
+
+
             SetTarget(EndPos.transform.position);
             MoveToTarget(TargetPos);
             moveSpeed = DoubleMoveSpeed;

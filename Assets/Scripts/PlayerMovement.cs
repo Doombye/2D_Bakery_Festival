@@ -8,7 +8,10 @@ public class PlayerMovement : MonoBehaviour
 
     public float Speed;
     Rigidbody2D rigid;
+    DropFoodsPointMng dropfoodMng;
 
+    DropFoodsStartTImers FoodTimer;
+    public bool IsMove = false;
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -22,23 +25,67 @@ public class PlayerMovement : MonoBehaviour
             this.transform.eulerAngles = new Vector3(0, 0, 0);
         }
     }
+    private void Start()
+    {
+        FoodTimer = GameObject.Find("GameMng").GetComponent<DropFoodsStartTImers>();
+        dropfoodMng = GameObject.Find("GameMng").GetComponent<DropFoodsPointMng>();
 
+        StartCoroutine("StartGame");
+    }
+    IEnumerator StartGame()
+    {
+        if (FoodTimer.IsStart)
+        {
+            IsMove = true;
+        }
+        else
+        {
+
+            yield return new WaitForSeconds(0.1f);
+            StartCoroutine("StartGame");
+        }
+    }
     private void FixedUpdate()
     {
-        if (LookRight)
+        if(!FoodTimer.IsStart)
         {
-            rigid.velocity = new Vector2(Speed * Time.deltaTime, rigid.velocity.y);
+
         }
-        else if (!LookRight)
+        else
         {
-            rigid.velocity = new Vector2((-1) * Speed * Time.deltaTime, rigid.velocity.y);
+            if (IsMove)
+            {
+                if (LookRight)
+                {
+                    rigid.velocity = new Vector2(Speed * Time.deltaTime, rigid.velocity.y);
+                }
+                else if (!LookRight)
+                {
+                    rigid.velocity = new Vector2((-1) * Speed * Time.deltaTime, rigid.velocity.y);
+                }
+            }
         }
+       
+       
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Food1")
         {
             Destroy(collision.gameObject);
+            dropfoodMng.GetFirstBread();
+        }
+        //2가 크로아상
+        if (collision.gameObject.tag == "Food2")
+        {
+            Destroy(collision.gameObject);
+            dropfoodMng.GetSecondBread();
+        }
+        //오타로 3을 못붙여서 3이 상한 빵
+        if (collision.gameObject.tag == "Food")
+        {
+            Destroy(collision.gameObject);
+            dropfoodMng.GetThirdBread();
         }
     }
     public void FlipBut()

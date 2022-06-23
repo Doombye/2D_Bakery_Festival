@@ -41,6 +41,8 @@ TagManager:
   - DonutShopStay5
   - MelonShopStay5
   - CakeShopStay5
+  - Food2
+  - Food
   layers:
   - Default
   - TransparentFX
