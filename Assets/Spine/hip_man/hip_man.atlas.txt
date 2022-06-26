@@ -1,0 +1,111 @@
+
+hip_man.png
+size: 1215,393
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+back_jumper
+  rotate: false
+  xy: 1169, 226
+  size: 44, 60
+  orig: 46, 64
+  offset: 1, 2
+  index: -1
+back_red
+  rotate: true
+  xy: 432, 7
+  size: 49, 78
+  orig: 51, 80
+  offset: 1, 1
+  index: -1
+clothes
+  rotate: false
+  xy: 713, 111
+  size: 243, 280
+  orig: 245, 282
+  offset: 1, 1
+  index: -1
+eyebrow
+  rotate: true
+  xy: 1169, 25
+  size: 199, 42
+  orig: 199, 42
+  offset: 0, 0
+  index: -1
+glasses
+  rotate: true
+  xy: 958, 130
+  size: 156, 71
+  orig: 158, 73
+  offset: 1, 1
+  index: -1
+glasses_frame
+  rotate: false
+  xy: 512, 2
+  size: 240, 74
+  orig: 242, 77
+  offset: 1, 1
+  index: -1
+head
+  rotate: true
+  xy: 2, 9
+  size: 382, 368
+  orig: 386, 371
+  offset: 2, 1
+  index: -1
+l_arm
+  rotate: true
+  xy: 754, 2
+  size: 107, 208
+  orig: 109, 210
+  offset: 1, 1
+  index: -1
+l_eye
+  rotate: false
+  xy: 372, 5
+  size: 58, 51
+  orig: 60, 54
+  offset: 1, 2
+  index: -1
+l_leg
+  rotate: false
+  xy: 506, 78
+  size: 205, 313
+  orig: 208, 315
+  offset: 1, 1
+  index: -1
+mouth
+  rotate: false
+  xy: 2, 2
+  size: 23, 5
+  orig: 26, 8
+  offset: 1, 1
+  index: -1
+r_arm
+  rotate: true
+  xy: 964, 28
+  size: 100, 203
+  orig: 102, 207
+  offset: 1, 2
+  index: -1
+r_eye
+  rotate: false
+  xy: 1031, 225
+  size: 79, 61
+  orig: 81, 63
+  offset: 1, 1
+  index: -1
+r_leg
+  rotate: false
+  xy: 372, 58
+  size: 132, 333
+  orig: 134, 336
+  offset: 1, 1
+  index: -1
+red
+  rotate: false
+  xy: 964, 288
+  size: 232, 103
+  orig: 232, 103
+  offset: 0, 0
+  index: -1

@@ -8,10 +8,10 @@ using TMPro;
 
 public class UITextManager : MonoBehaviour
 {
-    [SerializeField] Text userName;
+    [SerializeField] TextMeshProUGUI userName;
     [SerializeField] TextMeshProUGUI goldText;
     [SerializeField] TextMeshProUGUI rubyText;
-    [SerializeField] Text goldPerSecText;
+    [SerializeField] TextMeshProUGUI goldPerSecText;
     [SerializeField] CanvasRenderer panel;
 
     int persecGold;

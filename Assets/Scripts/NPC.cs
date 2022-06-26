@@ -17,6 +17,9 @@ public class NPC : MonoBehaviour
     Transform UpNpcPos;
     Transform EndPos;
 
+    //가만히 멈췄을 때를 대비
+    public Vector3 TempPos;
+
     public bool HaveTarget = false;
     float DoubleMoveSpeed;
     float DefaultmoveSpeed;
@@ -32,7 +35,7 @@ public class NPC : MonoBehaviour
     FestivalManager festivalMng;
 
     private void Start()
-    { 
+    {
         festivalMng = GameObject.Find("DataController").GetComponent<FestivalManager>();
         //EndPos 안에 끝지점을 정해줄 Transform 을 집어넣는다
         EndPos = GameObject.FindGameObjectWithTag("L_End").GetComponent<Transform>();
@@ -41,13 +44,20 @@ public class NPC : MonoBehaviour
 
         DefaultmoveSpeed = (width * percent) / 100;
         DoubleMoveSpeed = (width * percent) / 40;
+
+        TempPos = this.transform.position;
+
+        StartCoroutine("PushToEnd");
     }
 
     void Update()
     {
+        TempPos = this.transform.position;
+
+
         //축제이벤트가 실행이 되면 모든것을 멈추고 오른쪽으로 빠르게 이동 
         IsFestivalNow = GameObject.Find("DataController").GetComponent<FestivalManager>().IsFestival;
-        if(IsFestivalNow)
+        if (IsFestivalNow)
         {
 
             //축제가 되었을때 다시 비어있는 상태라고 설정 해주는 것.
@@ -96,7 +106,7 @@ public class NPC : MonoBehaviour
                 }
             }
         }
-        
+
 
     }
     // 해당 Vector3 위치로 타겟을 지정해 주는 역활
@@ -542,5 +552,20 @@ public class NPC : MonoBehaviour
         StopCoroutine("ReturnTimer");
 
 
+    }
+    IEnumerator PushToEnd()
+    {
+        yield return new WaitForSeconds(0.2f);
+        if (this.transform.position.y <= 330)
+        {
+            Debug.Log("왜 안움직이니");
+            if (this.transform.position == TempPos)
+            {
+                Debug.Log("움직여줘");
+
+                SetTarget(EndPos.transform.position);
+            }
+        }
+        StartCoroutine("PushToEnd");
     }
 }

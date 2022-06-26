@@ -1,0 +1,111 @@
+
+husky.png
+size: 917,524
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+clothes
+  rotate: false
+  xy: 754, 157
+  size: 134, 197
+  orig: 136, 199
+  offset: 1, 1
+  index: -1
+clothes_in
+  rotate: false
+  xy: 473, 320
+  size: 225, 202
+  orig: 227, 204
+  offset: 1, 1
+  index: -1
+hat_haed_skin
+  rotate: false
+  xy: 2, 142
+  size: 267, 380
+  orig: 269, 382
+  offset: 1, 1
+  index: -1
+l_arm_stick
+  rotate: true
+  xy: 473, 123
+  size: 52, 271
+  orig: 54, 273
+  offset: 1, 1
+  index: -1
+l_ear
+  rotate: true
+  xy: 739, 3
+  size: 72, 126
+  orig: 75, 131
+  offset: 2, 4
+  index: -1
+l_eye
+  rotate: true
+  xy: 867, 21
+  size: 54, 48
+  orig: 56, 50
+  offset: 1, 1
+  index: -1
+l_leg
+  rotate: true
+  xy: 469, 39
+  size: 82, 268
+  orig: 84, 270
+  offset: 1, 1
+  index: -1
+lens
+  rotate: true
+  xy: 2, 7
+  size: 133, 218
+  orig: 133, 218
+  offset: 0, 0
+  index: -1
+mouth
+  rotate: false
+  xy: 867, 2
+  size: 35, 17
+  orig: 37, 19
+  offset: 1, 1
+  index: -1
+r_arm
+  rotate: true
+  xy: 271, 35
+  size: 129, 196
+  orig: 132, 198
+  offset: 2, 1
+  index: -1
+r_ear
+  rotate: true
+  xy: 746, 77
+  size: 78, 141
+  orig: 80, 144
+  offset: 1, 2
+  index: -1
+r_eye
+  rotate: true
+  xy: 222, 72
+  size: 68, 45
+  orig: 70, 47
+  offset: 1, 1
+  index: -1
+r_leg
+  rotate: true
+  xy: 473, 177
+  size: 141, 279
+  orig: 143, 281
+  offset: 1, 1
+  index: -1
+tail
+  rotate: true
+  xy: 700, 356
+  size: 166, 213
+  orig: 168, 216
+  offset: 1, 2
+  index: -1
+up_cloth
+  rotate: false
+  xy: 271, 166
+  size: 200, 356
+  orig: 202, 358
+  offset: 1, 1
+  index: -1

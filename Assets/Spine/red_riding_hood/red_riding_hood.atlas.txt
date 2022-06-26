@@ -1,0 +1,97 @@
+
+red_riding_hood.png
+size: 1135,499
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: true
+  xy: 2, 2
+  size: 495, 590
+  orig: 497, 592
+  offset: 1, 1
+  index: -1
+bucket
+  rotate: true
+  xy: 820, 7
+  size: 107, 138
+  orig: 109, 142
+  offset: 1, 1
+  index: -1
+eye
+  rotate: false
+  xy: 916, 157
+  size: 185, 69
+  orig: 187, 71
+  offset: 1, 1
+  index: -1
+flower
+  rotate: true
+  xy: 594, 8
+  size: 132, 91
+  orig: 134, 93
+  offset: 1, 1
+  index: -1
+l_arm
+  rotate: false
+  xy: 960, 26
+  size: 173, 129
+  orig: 175, 131
+  offset: 1, 1
+  index: -1
+l_ear
+  rotate: true
+  xy: 839, 116
+  size: 212, 75
+  orig: 214, 77
+  offset: 1, 1
+  index: -1
+l_hair
+  rotate: true
+  xy: 916, 228
+  size: 100, 208
+  orig: 102, 210
+  offset: 1, 1
+  index: -1
+l_leg
+  rotate: true
+  xy: 594, 360
+  size: 137, 304
+  orig: 149, 306
+  offset: 11, 1
+  index: -1
+mouth
+  rotate: true
+  xy: 1059, 452
+  size: 45, 40
+  orig: 47, 42
+  offset: 1, 1
+  index: -1
+r_arm
+  rotate: false
+  xy: 700, 9
+  size: 118, 150
+  orig: 120, 152
+  offset: 1, 1
+  index: -1
+r_ear
+  rotate: true
+  xy: 700, 161
+  size: 197, 137
+  orig: 199, 145
+  offset: 1, 7
+  index: -1
+r_hair
+  rotate: false
+  xy: 594, 142
+  size: 104, 216
+  orig: 106, 218
+  offset: 1, 1
+  index: -1
+r_leg
+  rotate: false
+  xy: 900, 330
+  size: 157, 167
+  orig: 159, 169
+  offset: 1, 1
+  index: -1

@@ -1,0 +1,90 @@
+
+yellow_girl.png
+size: 1711,573
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+back_hair
+  rotate: true
+  xy: 1211, 69
+  size: 144, 211
+  orig: 146, 213
+  offset: 1, 1
+  index: -1
+back_ribon
+  rotate: true
+  xy: 1527, 117
+  size: 177, 112
+  orig: 179, 114
+  offset: 1, 1
+  index: -1
+back_skirt
+  rotate: true
+  xy: 1211, 215
+  size: 356, 226
+  orig: 359, 228
+  offset: 2, 1
+  index: -1
+bread
+  rotate: false
+  xy: 1641, 186
+  size: 62, 108
+  orig: 64, 110
+  offset: 1, 1
+  index: -1
+eye
+  rotate: false
+  xy: 1424, 9
+  size: 190, 68
+  orig: 192, 73
+  offset: 1, 1
+  index: -1
+face_hair
+  rotate: true
+  xy: 2, 2
+  size: 569, 633
+  orig: 571, 635
+  offset: 1, 1
+  index: -1
+front_skirt_top
+  rotate: true
+  xy: 1439, 296
+  size: 275, 270
+  orig: 282, 272
+  offset: 1, 1
+  index: -1
+l_arm
+  rotate: true
+  xy: 1616, 7
+  size: 108, 68
+  orig: 110, 72
+  offset: 1, 1
+  index: -1
+l_leg
+  rotate: true
+  xy: 1211, 3
+  size: 64, 203
+  orig: 66, 205
+  offset: 1, 1
+  index: -1
+mouth
+  rotate: true
+  xy: 1424, 175
+  size: 38, 10
+  orig: 40, 12
+  offset: 1, 1
+  index: -1
+r_arm_umbrella
+  rotate: true
+  xy: 637, 30
+  size: 541, 572
+  orig: 543, 574
+  offset: 1, 1
+  index: -1
+r_leg
+  rotate: false
+  xy: 1439, 79
+  size: 86, 215
+  orig: 88, 217
+  offset: 1, 1
+  index: -1

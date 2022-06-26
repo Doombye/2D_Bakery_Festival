@@ -1,0 +1,104 @@
+
+wolf_girl.png
+size: 1024,515
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+band
+  rotate: false
+  xy: 619, 168
+  size: 221, 116
+  orig: 223, 119
+  offset: 1, 1
+  index: -1
+body_hair
+  rotate: true
+  xy: 2, 181
+  size: 332, 615
+  orig: 336, 623
+  offset: 2, 7
+  index: -1
+bread
+  rotate: true
+  xy: 2, 4
+  size: 175, 271
+  orig: 177, 277
+  offset: 1, 5
+  index: -1
+coller
+  rotate: true
+  xy: 773, 74
+  size: 92, 78
+  orig: 94, 80
+  offset: 1, 1
+  index: -1
+eye
+  rotate: true
+  xy: 991, 368
+  size: 145, 31
+  orig: 148, 35
+  offset: 2, 1
+  index: -1
+front_hair
+  rotate: true
+  xy: 275, 15
+  size: 164, 246
+  orig: 167, 249
+  offset: 1, 2
+  index: -1
+heart
+  rotate: false
+  xy: 763, 32
+  size: 49, 40
+  orig: 149, 280
+  offset: 1, 239
+  index: -1
+l_ear
+  rotate: true
+  xy: 853, 4
+  size: 184, 139
+  orig: 186, 142
+  offset: 1, 1
+  index: -1
+l_leg
+  rotate: true
+  xy: 523, 2
+  size: 75, 238
+  orig: 84, 242
+  offset: 1, 3
+  index: -1
+mouth
+  rotate: false
+  xy: 523, 169
+  size: 39, 10
+  orig: 42, 23
+  offset: 2, 10
+  index: -1
+r_arm
+  rotate: true
+  xy: 848, 190
+  size: 122, 168
+  orig: 124, 170
+  offset: 1, 1
+  index: -1
+r_ear
+  rotate: false
+  xy: 848, 314
+  size: 141, 199
+  orig: 143, 201
+  offset: 1, 1
+  index: -1
+r_leg
+  rotate: true
+  xy: 523, 79
+  size: 87, 248
+  orig: 89, 257
+  offset: 1, 8
+  index: -1
+tail
+  rotate: false
+  xy: 619, 286
+  size: 227, 227
+  orig: 229, 229
+  offset: 1, 1
+  index: -1

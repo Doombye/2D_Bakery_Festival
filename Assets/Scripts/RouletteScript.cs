@@ -16,8 +16,8 @@ public class RouletteScript : MonoBehaviour
     public Text ResultText;
     public GameObject ResultPanel;
     void Update()
-    { 
-        if(CanPressBut)
+    {
+        if (CanPressBut)
         {
             if (PressBut)
             {
@@ -27,11 +27,13 @@ public class RouletteScript : MonoBehaviour
             {
                 if (SpinSpeed > 0.01)
                 {
+                    CanPressBut = false;
                     this.SpinSpeed *= 0.997f;
                     IsSpin = true;
                 }
                 else
                 {
+                    CanPressBut = true;
                     this.SpinSpeed = 0;
                     IsSpin = false;
                     if (HaveResult)
@@ -86,17 +88,17 @@ public class RouletteScript : MonoBehaviour
             transform.Rotate(0, 0, this.SpinSpeed);
 
         }
-        
-        
+
+
     }
 
     public void RouletteBut()
-    { 
-        if(CanPressBut)
+    {
+        if (CanPressBut)
         {
             PressBut = !PressBut;
             HaveResult = true;
         }
-       
+
     }
 }

@@ -80,7 +80,6 @@ public class DataController : Singleton<DataController>
             string gold = PlayerPrefs.GetString("Gold");
             // 스트링 골드를 인트로 전달
             return long.Parse(gold);
-
         }
         set
         {
@@ -144,8 +143,6 @@ public class DataController : Singleton<DataController>
         PlayerPrefs.SetInt(key + "_cost", clickUpButton.currentCost);            // 키값(_cost)으로 현재 currentCost 를 저장. (구매비용)
     }
 
-
-
     // 초당 수익 데이터 불러오기
     public void LoadWorkButton(PerSecUpButton perSecUpButton)
     {
@@ -188,7 +185,6 @@ public class DataController : Singleton<DataController>
             PlayerPrefs.SetInt(key + "_isBuy", 0);
         }
     }
-
 
     // 초당 수익 총 합
     public int GetGoldPerSec()

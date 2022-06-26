@@ -1,0 +1,90 @@
+
+duck.png
+size: 1295,416
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: true
+  xy: 443, 17
+  size: 397, 555
+  orig: 428, 639
+  offset: 29, 82
+  index: -1
+haed_back
+  rotate: true
+  xy: 1166, 220
+  size: 80, 127
+  orig: 84, 130
+  offset: 1, 2
+  index: -1
+hair
+  rotate: false
+  xy: 1162, 14
+  size: 86, 90
+  orig: 90, 94
+  offset: 3, 3
+  index: -1
+head
+  rotate: false
+  xy: 2, 2
+  size: 439, 412
+  orig: 441, 414
+  offset: 1, 1
+  index: -1
+l_arm
+  rotate: false
+  xy: 1166, 106
+  size: 117, 112
+  orig: 119, 114
+  offset: 1, 1
+  index: -1
+l_eye
+  rotate: false
+  xy: 1000, 7
+  size: 50, 66
+  orig: 52, 68
+  offset: 1, 1
+  index: -1
+l_leg
+  rotate: false
+  xy: 1000, 75
+  size: 160, 134
+  orig: 162, 136
+  offset: 1, 1
+  index: -1
+mouth
+  rotate: false
+  xy: 1000, 321
+  size: 217, 93
+  orig: 219, 95
+  offset: 1, 1
+  index: -1
+r_arm
+  rotate: false
+  xy: 1219, 302
+  size: 72, 112
+  orig: 74, 114
+  offset: 1, 1
+  index: -1
+r_eye
+  rotate: false
+  xy: 1109, 12
+  size: 44, 61
+  orig: 46, 63
+  offset: 1, 1
+  index: -1
+r_leg
+  rotate: false
+  xy: 1000, 211
+  size: 164, 108
+  orig: 166, 110
+  offset: 1, 1
+  index: -1
+tail
+  rotate: true
+  xy: 1052, 12
+  size: 61, 55
+  orig: 66, 57
+  offset: 4, 1
+  index: -1
