@@ -6,19 +6,21 @@ using TMPro;
 
 
 
-public class UITextManager : MonoBehaviour
+public class UITextManager : Singleton<UITextManager>
 {
     [SerializeField] TextMeshProUGUI userName;
     [SerializeField] TextMeshProUGUI goldText;
     [SerializeField] TextMeshProUGUI rubyText;
     [SerializeField] TextMeshProUGUI goldPerSecText;
+    [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] CanvasRenderer panel;
 
     int persecGold;
 
+
     private void Start()
     {
-        //OnPanel();   
+
     }
 
     private void Update()
@@ -28,9 +30,11 @@ public class UITextManager : MonoBehaviour
         userName.text = PlayerPrefs.GetString("Name").ToString();
         rubyText.text = string.Format("{0:#,###0}", DataController.Instance.Ruby);
 
-        
-        
-        if(panel.gameObject.activeSelf == true)
+
+        Debug.Log("∑æ¿∫ ∏Ó¿Ã¥œ" + PlayerPrefs.GetInt("_Clicklevel"));
+        Debug.Log("¿Ã∏ß¿∫ ππ¥œ" + PlayerPrefs.GetString("Name").ToString());
+
+        if (panel.gameObject.activeSelf == true)
         {
             goldPerSecText.text = string.Format("{0:#,###0}", persecGold) + "/s";  
         }
