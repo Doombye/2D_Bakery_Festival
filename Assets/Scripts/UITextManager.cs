@@ -12,7 +12,6 @@ public class UITextManager : Singleton<UITextManager>
     [SerializeField] TextMeshProUGUI goldText;
     [SerializeField] TextMeshProUGUI rubyText;
     [SerializeField] TextMeshProUGUI goldPerSecText;
-    [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] CanvasRenderer panel;
 
     int persecGold;

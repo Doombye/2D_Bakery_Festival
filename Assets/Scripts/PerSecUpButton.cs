@@ -29,7 +29,7 @@ public class PerSecUpButton : Singleton<PerSecUpButton>
     private void Start()
     {
         DataController.Instance.LoadWorkButton(this);        // 기존 아이템 정보 불러오기
-
+      
         StartCoroutine(AddGoldLoop());
         UpdataUI();
     }
@@ -46,7 +46,7 @@ public class PerSecUpButton : Singleton<PerSecUpButton>
             isBuy = true;
             DataController.Instance.Gold -= (currentCost);
             level++;
-
+            
             UpdateItem();
             UpdataUI();
 

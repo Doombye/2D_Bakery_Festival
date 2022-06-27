@@ -244,4 +244,5 @@ public class DataController : Singleton<DataController>
     {
         MakeNewName.Instance.playerNameInput.text = PlayerPrefs.GetString("Name");
     }
+
 }

@@ -10,7 +10,7 @@ public class ShopInfo :MonoBehaviour
     float Timer =1f;
 
 
-    ShopManager ShopMng;
+    ShopDataContoller ShopMng;
     GameObject NpcObject;
 
     [SerializeField]GameObject BackToLine;
