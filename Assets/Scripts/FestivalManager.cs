@@ -26,6 +26,9 @@ public class FestivalManager : MonoBehaviour
     //게이지바를 채우기 위한 이미지
     [SerializeField]Image FilledImage;
 
+    //음악 소환술식
+    MusicMng Music;
+
 
     NPC_Spawner UpSpawner;
     NPC_Spawner DownSpawner;
@@ -36,6 +39,7 @@ public class FestivalManager : MonoBehaviour
 
     public void Start()
     {
+        Music = GameObject.Find("BGMPlayer").GetComponent<MusicMng>();
         UpSpawner = GameObject.Find("NpcSpawner1").GetComponent<NPC_Spawner>();
         DownSpawner = GameObject.Find("NpcSpawner2").GetComponent<NPC_Spawner>();
         Mainclickbut = GameObject.Find("MainClickButton").GetComponent<MainClickButton>();
@@ -84,6 +88,7 @@ public class FestivalManager : MonoBehaviour
 
         if (FestivalTime >= 15)
         {
+            Music.DefaultSong();
             IsFestival = false;
             FestivalCount = 0; 
             FestivalTime = 0;
@@ -113,6 +118,7 @@ public class FestivalManager : MonoBehaviour
             } 
             SpawnType = !SpawnType;
             IsFestival = true;
+            Music.FestivalSong();
             Mainclickbut.IsFestivalNow = true; 
             SpecialCount = 0;
             StartCoroutine("FestivalFunc");
@@ -167,4 +173,7 @@ public class FestivalManager : MonoBehaviour
             StartCoroutine("AddSpawnCounter");
         }
     }
+
+
 }
+

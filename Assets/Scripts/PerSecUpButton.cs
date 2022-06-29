@@ -5,10 +5,7 @@ using UnityEngine.UI;
 
 public class PerSecUpButton : Singleton<PerSecUpButton>
 {
-    [SerializeField] Text itemText;
-    
-
-
+    [SerializeField] Text itemText;   
     public string itemName;
     public int level;
 
@@ -17,7 +14,7 @@ public class PerSecUpButton : Singleton<PerSecUpButton>
     public int startCurrentCost = 1;
 
     [HideInInspector]
-    public int goldPerCec;
+    public int goldPerSec;
     public int startGoldPerSec = 1;
 
     public float CostPow = 3.14f;
@@ -28,8 +25,7 @@ public class PerSecUpButton : Singleton<PerSecUpButton>
 
     private void Start()
     {
-        DataController.Instance.LoadWorkButton(this);        // 기존 아이템 정보 불러오기
-      
+        DataController.Instance.LoadPerSButton(this);        // 기존 아이템 정보 불러오기
         StartCoroutine(AddGoldLoop());
         UpdataUI();
     }
@@ -41,18 +37,38 @@ public class PerSecUpButton : Singleton<PerSecUpButton>
     // 아이템 구매시
     public void BuyItem()
     {
-        if (DataController.Instance.Gold >= currentCost)
-        {
-            isBuy = true;
-            DataController.Instance.Gold -= (currentCost);
-            level++;
-            
-            UpdateItem();
-            UpdataUI();
+        Debug.Log(DataController.Instance.Ruby);
 
-            // 구매한 아이템 저장
-            DataController.Instance.SaveWorkButton(this);
+        if(isBuy != true)
+        {
+            if(DataController.Instance.Ruby >= currentCost)
+            {
+                DataController.Instance.Ruby -= currentCost;
+                level++;
+                isBuy = true;
+                CostUpdate();
+                DataController.Instance.SavePerSButton(this);
+            }
         }
+        else
+        {
+            if (DataController.Instance.Ruby >= currentCost)
+            {
+                DataController.Instance.Ruby -= currentCost;
+
+                Debug.Log(DataController.Instance.Ruby);
+
+                level++;
+                UpdatePerSec();
+                CostUpdate();
+                UpdataUI();
+
+                DataController.Instance.SavePerSButton(this);
+                // 구매한 아이템 저장
+
+                Debug.Log(DataController.Instance.Ruby);
+            }
+        }        
     }
 
     // 1초마다 반복해서 골드를 증가
@@ -64,7 +80,7 @@ public class PerSecUpButton : Singleton<PerSecUpButton>
         {
             if (isBuy)
             {
-                DataController.Instance.Gold += (goldPerCec);
+                DataController.Instance.Gold += (goldPerSec);
                 Debug.Log("1초당 코루틴 재생중");
             }
 
@@ -72,16 +88,21 @@ public class PerSecUpButton : Singleton<PerSecUpButton>
         }
     }
 
-    public void UpdateItem()
+    public void UpdatePerSec()
     {
-        goldPerCec = goldPerCec + startGoldPerSec * (int)Mathf.Pow(upgradePow, level);
-        currentCost = startCurrentCost * (int)Mathf.Pow(CostPow, level);
+        goldPerSec  =  Mathf.FloorToInt(goldPerSec * upgradePow);
     }
+    public void CostUpdate()
+    {
+        currentCost = Mathf.FloorToInt(currentCost * CostPow);
+
+    }
+
 
     public void UpdataUI()
     {
         itemText.text = itemName + "\nLv : " + string.Format("{0:#,###0}", level) +
             "\nPrice : " + string.Format("{0:#,###0}", currentCost) +
-            "\nWagePerSec :" + string.Format("{0:#,###0}", goldPerCec);
+            "\nWagePerSec :" + string.Format("{0:#,###0}", goldPerSec);
     }
 }

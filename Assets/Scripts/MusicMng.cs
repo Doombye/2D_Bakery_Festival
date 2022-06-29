@@ -4,20 +4,28 @@ using UnityEngine;
 using UnityEngine.UI;   
 public class MusicMng : MonoBehaviour
 {
+    public AudioSource Speaker;
+    [SerializeField] private AudioClip[] clip;
+    FestivalManager fest;
+    bool OnTheFestivalSong = false;
 
-    int SongNum = 0;
-    [SerializeField] AudioSource MusicPlayer;
-
-
-    void Start()
+    void Start() 
     {
-        MusicPlayer = GetComponent<AudioSource>();
-
-        MusicPlayer.Play();
-    }
-
-    // Update is called once per frame
-    void Update()
+        fest = GameObject.Find("DataController").GetComponent<FestivalManager>();
+        Speaker = GetComponent<AudioSource>();
+        DefaultSong();
+    } 
+ 
+    
+    public void FestivalSong()
     {
+        Speaker.clip = clip[1];
+        Speaker.Play();
     }
+    public void DefaultSong()
+    {
+        Speaker.clip = clip[0];
+        Speaker.Play();
+    } 
+
 }

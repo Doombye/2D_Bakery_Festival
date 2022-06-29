@@ -11,9 +11,9 @@ public class PlayerMovement : MonoBehaviour
     DropFoodsPointMng dropfoodMng;
 
     DropFoodsStartTImers FoodTimer;
-    public bool IsMove = false;
+    public bool IsMove = false; 
     private void Awake()
-    {
+    { 
         rigid = GetComponent<Rigidbody2D>();
 
         if (LookRight)
@@ -70,23 +70,45 @@ public class PlayerMovement : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Food1")
+        if(FoodTimer.IsStart)
         {
-            Destroy(collision.gameObject);
-            dropfoodMng.GetFirstBread();
+            if (collision.gameObject.tag == "Food1")
+            {
+                Destroy(collision.gameObject);
+                dropfoodMng.GetFirstBread();
+            }
+            //2가 크로아상
+            if (collision.gameObject.tag == "Food2")
+            {
+                Destroy(collision.gameObject);
+                dropfoodMng.GetSecondBread();
+            }
+            //오타로 3을 못붙여서 3이 상한 빵
+            if (collision.gameObject.tag == "Food")
+            {
+                Destroy(collision.gameObject);
+                dropfoodMng.GetThirdBread();
+            }
+
         }
-        //2가 크로아상
-        if (collision.gameObject.tag == "Food2")
+        else
         {
-            Destroy(collision.gameObject);
-            dropfoodMng.GetSecondBread();
+            if (collision.gameObject.tag == "Food1")
+            {
+                Destroy(collision.gameObject); 
+            }
+            //2가 크로아상
+            if (collision.gameObject.tag == "Food2")
+            {
+                Destroy(collision.gameObject); 
+            }
+            //오타로 3을 못붙여서 3이 상한 빵
+            if (collision.gameObject.tag == "Food")
+            {
+                Destroy(collision.gameObject); 
+            }
         }
-        //오타로 3을 못붙여서 3이 상한 빵
-        if (collision.gameObject.tag == "Food")
-        {
-            Destroy(collision.gameObject);
-            dropfoodMng.GetThirdBread();
-        }
+    
     }
     public void FlipBut()
     {

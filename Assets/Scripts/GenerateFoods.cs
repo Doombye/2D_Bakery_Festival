@@ -64,10 +64,10 @@ public class GenerateFoods : MonoBehaviour
     {
         if(Generatenow)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.03f);
             if (Food1Time <= 1)
             {
-                Food1Time += 0.3f;
+                Food1Time += 1f;
                 StartCoroutine("Food1Timer");
             }
 
@@ -89,7 +89,7 @@ public class GenerateFoods : MonoBehaviour
         if (Generatenow)
         {
             yield return new WaitForSeconds(0.1f);
-            if (Food2Time < 3)
+            if (Food2Time < 2)
             {
                 Food2Time += 0.1f;
                 StartCoroutine("Food2Timer");
@@ -111,7 +111,7 @@ public class GenerateFoods : MonoBehaviour
         if (Generatenow)
         {
             yield return new WaitForSeconds(0.1f);
-            if (Food3Time < 6)
+            if (Food3Time < 0.5)
             {
                 Food3Time += 0.1f;
                 StartCoroutine("Food3Timer");

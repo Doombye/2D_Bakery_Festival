@@ -60,22 +60,56 @@ public class NPC : MonoBehaviour
         if (IsFestivalNow)
         {
 
-            //축제가 되었을때 다시 비어있는 상태라고 설정 해주는 것.
-            GameObject.Find("PieShopStay3").GetComponent<EmptyPlace>().IsEmpty = true;
-            GameObject.Find("PieShopStay4").GetComponent<EmptyPlace>().IsEmpty = true;
-            GameObject.Find("CookieShopStay3").GetComponent<EmptyPlace>().IsEmpty = true;
-            GameObject.Find("CookieShopStay4").GetComponent<EmptyPlace>().IsEmpty = true;
+            if(ShopController.Instance.ShopLevels == 0)
+            {
+                goto Set6;
+            }
+            else if(ShopController.Instance.ShopLevels == 1)
+            {
+                goto Set5;
+            }
+            else if (ShopController.Instance.ShopLevels == 2)
+            {
+                goto Set4;
+            }
+            else if (ShopController.Instance.ShopLevels == 3)
+            {
+                goto Set3;
+            }
+            else if (ShopController.Instance.ShopLevels == 4)
+            {
+                goto Set2;
+            }
+            else if (ShopController.Instance.ShopLevels == 5)
+            {
+                goto Set1;
+            }
+        //축제가 되었을때 다시 비어있는 상태라고 설정 해주는 것.
+Set1:
             GameObject.Find("CakeShopStay3").GetComponent<EmptyPlace>().IsEmpty = true;
             GameObject.Find("CakeShopStay4").GetComponent<EmptyPlace>().IsEmpty = true;
-            GameObject.Find("DonutShopStay3").GetComponent<EmptyPlace>().IsEmpty = true;
-            GameObject.Find("DonutShopStay4").GetComponent<EmptyPlace>().IsEmpty = true;
+            GameObject.Find("CakeShopStay5").GetComponent<EmptyPlace>().IsEmpty = true;
+           
+Set2:
             GameObject.Find("MelonShopStay3").GetComponent<EmptyPlace>().IsEmpty = true;
             GameObject.Find("MelonShopStay4").GetComponent<EmptyPlace>().IsEmpty = true;
-            GameObject.Find("PieShopStay5").GetComponent<EmptyPlace>().IsEmpty = true;
-            GameObject.Find("CookieShopStay5").GetComponent<EmptyPlace>().IsEmpty = true;
-            GameObject.Find("CakeShopStay5").GetComponent<EmptyPlace>().IsEmpty = true;
-            GameObject.Find("DonutShopStay5").GetComponent<EmptyPlace>().IsEmpty = true;
             GameObject.Find("MelonShopStay5").GetComponent<EmptyPlace>().IsEmpty = true;
+           
+Set3:
+            GameObject.Find("PieShopStay3").GetComponent<EmptyPlace>().IsEmpty = true;
+            GameObject.Find("PieShopStay4").GetComponent<EmptyPlace>().IsEmpty = true; 
+            GameObject.Find("PieShopStay5").GetComponent<EmptyPlace>().IsEmpty = true; 
+Set4: 
+            GameObject.Find("DonutShopStay3").GetComponent<EmptyPlace>().IsEmpty = true;
+            GameObject.Find("DonutShopStay4").GetComponent<EmptyPlace>().IsEmpty = true;
+            GameObject.Find("DonutShopStay5").GetComponent<EmptyPlace>().IsEmpty = true;
+
+Set5:
+            GameObject.Find("CookieShopStay3").GetComponent<EmptyPlace>().IsEmpty = true;
+            GameObject.Find("CookieShopStay4").GetComponent<EmptyPlace>().IsEmpty = true;
+            GameObject.Find("CookieShopStay5").GetComponent<EmptyPlace>().IsEmpty = true;
+Set6:
+
 
 
             SetTarget(EndPos.transform.position);
@@ -157,7 +191,7 @@ public class NPC : MonoBehaviour
             //이 상점의 고유번호 이 번호를 가지고 있어야 올라갔던 상점에 다시 들어가지 않게 한다 
             ReturnTempNum = 1;
             //이 가게를 들어갈지 말지 정하는 확률 (1,2)일때 1이면 들어가고 2일땐 들어가지 않는다
-            int RandN = Random.Range(1, 2);
+            int RandN = Random.Range(1, 4);
             //목적지인 가게위치 를 Transform 형태로 받기 위한 함수
             Transform T1;
             if (RandN == 1)
@@ -204,7 +238,7 @@ public class NPC : MonoBehaviour
         if (collision.gameObject.name == "CookieShopBox" && ReturnTempNum != 2)
         {
             ReturnTempNum = 2;
-            int RandN = Random.Range(1, 2);
+            int RandN = Random.Range(1, 4);
             Transform T1;
             if (RandN == 1)
             {
@@ -239,7 +273,7 @@ public class NPC : MonoBehaviour
         if (collision.gameObject.name == "CakeShopBox" && ReturnTempNum != 3)
         {
             ReturnTempNum = 3;
-            int RandN = Random.Range(1, 2);
+            int RandN = Random.Range(1, 4);
             Transform T1;
             if (RandN == 1)
             {
@@ -274,7 +308,7 @@ public class NPC : MonoBehaviour
         if (collision.gameObject.name == "DonutShopBox" && ReturnTempNum != 4)
         {
             ReturnTempNum = 4;
-            int RandN = Random.Range(1, 2);
+            int RandN = Random.Range(1, 4);
             Transform T1;
             if (RandN == 1)
             {
@@ -310,7 +344,7 @@ public class NPC : MonoBehaviour
         if (collision.gameObject.name == "MelonShopBox" && ReturnTempNum != 5)
         {
             ReturnTempNum = 5;
-            int RandN = Random.Range(1, 2);
+            int RandN = Random.Range(1, 4);
             Transform T1;
             if (RandN == 1)
             {
@@ -486,7 +520,62 @@ public class NPC : MonoBehaviour
     {
         //3초 가게에서 기다린후 
         yield return new WaitForSeconds(3f);
+        if (!IsFestivalNow)
+        {
+            switch (ReturnToNew)
+            {
+                case 1:
+                    DataController.Instance.Gold += PlayerPrefs.GetInt("PieSellPrice");
+                    break;
+                case 2:
+                    DataController.Instance.Gold += PlayerPrefs.GetInt("PieSellPrice");
+                    break;
+                case 3:
+                    DataController.Instance.Gold += PlayerPrefs.GetInt("CookieSellPrice");
+                    break;
+                case 4:
+                    DataController.Instance.Gold += PlayerPrefs.GetInt("CookieSellPrice");
+                    break;
+                case 5:
+                    DataController.Instance.Gold += PlayerPrefs.GetInt("CakeSellPrice");
+                    break;
+                case 6:
+                    DataController.Instance.Gold += PlayerPrefs.GetInt("CakeSellPrice");
+                    break;
+                case 7:
+                    DataController.Instance.Gold += PlayerPrefs.GetInt("DonutSellPrice");
+                    break;
+                case 8:
+                    DataController.Instance.Gold += PlayerPrefs.GetInt("DonutSellPrice");
+                    break;
+                case 9:
+                    DataController.Instance.Gold += PlayerPrefs.GetInt("CakeSellPrice");
+                    break;
+                case 10:
+                    DataController.Instance.Gold += PlayerPrefs.GetInt("CakeSellPrice");
+                    break;
+                case 11:
+                    DataController.Instance.Gold += PlayerPrefs.GetInt("PieSellPrice");
+                    break;
+                case 12:
+                    DataController.Instance.Gold += PlayerPrefs.GetInt("CookieSellPrice");
+                    break;
+                case 13:
+                    DataController.Instance.Gold += PlayerPrefs.GetInt("CakeSellPrice");
+                    break;
+                case 14:
+                    DataController.Instance.Gold += PlayerPrefs.GetInt("DonutSellPrice");
+                    break;
+                case 15:
+                    DataController.Instance.Gold += PlayerPrefs.GetInt("CakeSellPrice");
+                    break;
+                default:
+                    break;
 
+            }
+        }
+        
+        
         //아래에서 소환된 아이라면 그대로 아래까지 타겟설정
         if (NpcType == 2)
         {
