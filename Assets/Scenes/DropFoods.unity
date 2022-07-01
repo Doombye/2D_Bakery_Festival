@@ -157,9 +157,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DropYPosition: {fileID: 246764575}
-  Food1: {fileID: 2964777475364658348, guid: 0a29715830a95b64b8e7f73d5d8efc9f, type: 3}
-  Food2: {fileID: 2964777475364658348, guid: a3685fa0ba0d06844954f438b75ab893, type: 3}
-  Food3: {fileID: 2964777475364658348, guid: f6af060680994bf4485f1742c38ffc08, type: 3}
+  Food1: {fileID: 2223488421094765672, guid: 22257002bb8ffad419a908bdf4131264, type: 3}
+  Food2: {fileID: 935897528800484137, guid: 250cdf17fd732394492561b8deacada7, type: 3}
+  Food3: {fileID: 9063719853194646035, guid: 7077e99c097d4e040b6a78cbc5c6efd3, type: 3}
   Generatenow: 0
 --- !u!4 &83616881
 Transform:
