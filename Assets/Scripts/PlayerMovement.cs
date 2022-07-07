@@ -112,14 +112,18 @@ public class PlayerMovement : MonoBehaviour
     }
     public void FlipBut()
     {
+        Debug.Log("DDDDDD");
         LookRight = !LookRight;
         if (LookRight)
         {
             this.transform.eulerAngles = new Vector3(0, 180, 0);
+            Debug.Log("왼쪽");
         }
         else
         {
             this.transform.eulerAngles = new Vector3(0, 0, 0);
+            Debug.Log("오른쪽");
+
         }
     }
 }

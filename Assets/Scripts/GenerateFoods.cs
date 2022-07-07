@@ -75,7 +75,7 @@ public class GenerateFoods : MonoBehaviour
             {
                 Food1Time = 0;
                 int xPos = Random.Range(100, width - 60);
-                Debug.Log(xPos);
+                //Debug.Log(xPos);
                 Instantiate(Food1, new Vector3(xPos, DropYPosition.position.y, 0), Quaternion.identity, GameObject.Find("FoodsBank").transform);
 
                 StartCoroutine("Food1Timer");
