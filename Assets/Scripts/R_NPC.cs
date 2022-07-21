@@ -126,7 +126,7 @@ public class R_NPC : MonoBehaviour
         }
         if (collision.gameObject.name == "CakeShopBox" && ReturnTempNum != 3)
         {
-            Debug.Log("CakeShopCollision");
+            //Debug.Log("CakeShopCollision");
             ReturnTempNum = 3;
             int RandN = Random.Range(1, 2);
             Transform T1;

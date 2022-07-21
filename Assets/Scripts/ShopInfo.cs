@@ -25,7 +25,7 @@ public class ShopInfo :MonoBehaviour
         {
             if (Timer > 0)
             {
-                Debug.Log(Timer);
+                //Debug.Log(Timer);
                 Timer -= Time.deltaTime;
             }
             else
@@ -58,12 +58,12 @@ public class ShopInfo :MonoBehaviour
         {
             while (true)
             {
-                Debug.Log(Timer + this.gameObject.name);
+                //Debug.Log(Timer + this.gameObject.name);
                 Timer -= Time.deltaTime;
                 if (Timer < 0)
                 {
 
-                    Debug.Log("TImeOUt" + this.gameObject.name);
+                    //Debug.Log("TImeOUt" + this.gameObject.name);
                     break;
                 }
             }

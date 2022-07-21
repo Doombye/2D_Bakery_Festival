@@ -52,7 +52,7 @@ public class FestivalManager : MonoBehaviour
         {
             SpawnTheNpc();
         }
-        Debug.Log("터치를 확인");
+        //Debug.Log("터치를 확인");
     }
     void SpawnTheNpc()
     {

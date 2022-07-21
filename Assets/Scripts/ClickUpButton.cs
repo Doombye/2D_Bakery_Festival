@@ -46,7 +46,7 @@ public class ClickUpButton : Singleton<ClickUpButton>
             UpdateUpgrad();
             UpdateUI();
             DataController.Instance.SaveUpgradeButton(this);
-            Debug.Log("BuyUpgreade111111111111111111111111111111");
+           //Debug.Log("BuyUpgreade111111111111111111111111111111");
         }
     }
     public void UpdateUpgrad()

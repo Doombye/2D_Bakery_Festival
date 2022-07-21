@@ -30,8 +30,8 @@ public class UITextManager : Singleton<UITextManager>
         rubyText.text = string.Format("{0:#,###0}", DataController.Instance.Ruby);
 
 
-        Debug.Log("∑æ¿∫ ∏Ó¿Ã¥œ" + PlayerPrefs.GetInt("_Clicklevel"));
-        Debug.Log("¿Ã∏ß¿∫ ππ¥œ" + PlayerPrefs.GetString("Name").ToString());
+        //Debug.Log("∑æ¿∫ ∏Ó¿Ã¥œ" + PlayerPrefs.GetInt("_Clicklevel"));
+        //Debug.Log("¿Ã∏ß¿∫ ππ¥œ" + PlayerPrefs.GetString("Name").ToString());
 
         if (panel.gameObject.activeSelf == true)
         {

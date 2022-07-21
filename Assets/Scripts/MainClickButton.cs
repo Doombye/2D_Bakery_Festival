@@ -15,7 +15,7 @@ public class MainClickButton : MonoBehaviour
     private void Start()
     {
         festivalMng = GameObject.Find("DataController").GetComponent<FestivalManager>();
-        Debug.Log(festivalMng);
+        //Debug.Log(festivalMng);
     }
     public void OnMouseDown()
     {

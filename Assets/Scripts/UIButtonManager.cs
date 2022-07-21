@@ -95,7 +95,7 @@ public class UIButtonManager : MonoBehaviour
                     if (i == __Key - 1)
                     {
                         Panels[i].SetActive(true);
-                        Debug.Log(i + "번째 패널 켜기 완료!");
+                        //Debug.Log(i + "번째 패널 켜기 완료!");
                     }
                     
                 }

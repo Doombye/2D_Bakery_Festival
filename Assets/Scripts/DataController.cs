@@ -23,12 +23,14 @@ public class DataController : Singleton<DataController>
         //StartCoroutine(AddGoldLoop());
         // 게임에 접속하지 않아도 시간이 흐른만큼 골드를 더해준다. (최대 3일 까지)
         Gold += PlayerPrefs.GetInt("_isGoldPerSecSum") * Mathf.Clamp(AfterTime(), 0, 260000);
-        InvokeRepeating("UpdateLastPlayDate", 0f, 10f);         // 10초마다 플레이 시간 저장.
+
+        InvokeRepeating("UpdateLastPlayDate", 0f, 10f);         
     }
 
     private void Update()
     {
         //Debug.Log("초당 수익 : " + PlayerPrefs.GetInt("_isGoldPerSecSum") + " 원");
+        //StartCoroutine(LastPlayTimeUpdate());   // 10초마다 플레이 시간 저장.
 
         goldPerSecButtons = FindObjectsOfType<PerSecUpButton>();
         //Debug.Log("초당 수익 함수 : " + GetGoldPerSec());
@@ -49,10 +51,19 @@ public class DataController : Singleton<DataController>
         return time;
     }
 
+    IEnumerator LastPlayTimeUpdate()
+    {
+        yield return new WaitForSeconds(10f);
+        PlayerPrefs.SetString("Time", DateTime.Now.ToString());     // 현재 시간을 string으로 저장
+        //Debug.Log("저장");
+    }
+
     // 마지막 플레이 한 시점(시간) 업데이트
     void UpdateLastPlayDate()
     {
         PlayerPrefs.SetString("Time", DateTime.Now.ToString());     // 현재 시간을 string으로 저장
+       //Debug.Log("저장");
+
     }
 
     // 얼마동안 게임을 끄고 있었는지 확인하는 함수
@@ -140,7 +151,7 @@ public class DataController : Singleton<DataController>
         clickUpButton.level = PlayerPrefs.GetInt("_Clicklevel", 1);
         clickUpButton.upgradeGold = PlayerPrefs.GetInt(key + "_upgradeGold", clickUpButton.upgradeGold);
         clickUpButton.currentCost = PlayerPrefs.GetInt(key + "_upgradecost", clickUpButton.currentCost);
-        Debug.Log("클릭데이터 불러오기");
+        //Debug.Log("클릭데이터 불러오기");
 
     }
 
@@ -154,8 +165,8 @@ public class DataController : Singleton<DataController>
         PlayerPrefs.SetInt("_Clicklevel", clickUpButton.level);                 // 키값(_Clicklevel)으로 현재 level 을 저장.
         PlayerPrefs.SetInt(key + "_upgradeGold", clickUpButton.upgradeGold);     // 키값(_upgradeGold)으로 현재 upgradeGold 를 저장. (업그레이드시 클릭당 증가비용)
         PlayerPrefs.SetInt(key + "_upgradecost", clickUpButton.currentCost);            // 키값(_cost)으로 현재 currentCost 를 저장. (구매비용)
-        Debug.Log("클릭데이터 저장"); 
-        Debug.Log("클릭데이터 저장 :" + PlayerPrefs.GetInt("_Clicklevel", clickUpButton.level));
+        //Debug.Log("클릭데이터 저장"); 
+        //Debug.Log("클릭데이터 저장 :" + PlayerPrefs.GetInt("_Clicklevel", clickUpButton.level));
 
     }
 
@@ -241,7 +252,7 @@ public class DataController : Singleton<DataController>
         }
         else
         {
-            Debug.Log("닉네임을 입력하세요");
+            //Debug.Log("닉네임을 입력하세요");
             return;
         }
     }

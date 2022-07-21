@@ -98,7 +98,7 @@ public class GenerateFoods : MonoBehaviour
             {
                 Food2Time = 0;
                 float xPos = Random.Range(0, width*2);
-                Debug.Log(xPos);
+                //Debug.Log(xPos);
                 Instantiate(Food2, new Vector3(xPos, DropYPosition.position.y, 0), Quaternion.identity, GameObject.Find("FoodsBank").transform);
                 StartCoroutine("Food2Timer");
             }
@@ -121,7 +121,7 @@ public class GenerateFoods : MonoBehaviour
             {
                 Food3Time = 0;
                 float xPos = Random.Range(0, width*2);
-                Debug.Log(xPos);
+                //Debug.Log(xPos);
                 Instantiate(Food3, new Vector3(xPos, DropYPosition.position.y, 0), Quaternion.identity, GameObject.Find("FoodsBank").transform);
                 StartCoroutine("Food3Timer");
             }

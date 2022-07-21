@@ -37,7 +37,7 @@ public class PerSecUpButton : Singleton<PerSecUpButton>
     // 아이템 구매시
     public void BuyItem()
     {
-        Debug.Log(DataController.Instance.Ruby);
+        //Debug.Log(DataController.Instance.Ruby);
 
         if(isBuy != true)
         {
@@ -56,7 +56,7 @@ public class PerSecUpButton : Singleton<PerSecUpButton>
             {
                 DataController.Instance.Ruby -= currentCost;
 
-                Debug.Log(DataController.Instance.Ruby);
+                //Debug.Log(DataController.Instance.Ruby);
 
                 level++;
                 UpdatePerSec();
@@ -66,7 +66,7 @@ public class PerSecUpButton : Singleton<PerSecUpButton>
                 DataController.Instance.SavePerSButton(this);
                 // 구매한 아이템 저장
 
-                Debug.Log(DataController.Instance.Ruby);
+                //Debug.Log(DataController.Instance.Ruby);
             }
         }        
     }
@@ -81,7 +81,7 @@ public class PerSecUpButton : Singleton<PerSecUpButton>
             if (isBuy)
             {
                 DataController.Instance.Gold += (goldPerSec);
-                Debug.Log("1초당 코루틴 재생중");
+                //Debug.Log("1초당 코루틴 재생중");
             }
 
             yield return new WaitForSeconds(1.0f);

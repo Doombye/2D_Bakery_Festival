@@ -28,7 +28,7 @@ public class R_NPC_Spawn : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= spawnTime)
         {
-            Debug.Log("¼Õ´Ô »ý»ê");
+           //Debug.Log("¼Õ´Ô »ý»ê");
             Instantiate(prefab, pivot.position, Quaternion.Euler(0,0,0), GameObject.Find("Canvas").transform);
             timer = 0;
             count++;

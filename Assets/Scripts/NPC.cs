@@ -647,10 +647,10 @@ Set6:
         yield return new WaitForSeconds(0.2f);
         if (this.transform.position.y <= 330)
         {
-            Debug.Log("왜 안움직이니");
+            //Debug.Log("왜 안움직이니");
             if (this.transform.position == TempPos)
             {
-                Debug.Log("움직여줘");
+                //Debug.Log("움직여줘");
 
                 SetTarget(EndPos.transform.position);
             }

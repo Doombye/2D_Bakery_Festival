@@ -57,7 +57,7 @@ public class RouletteScript : MonoBehaviour
                     IsSpin = false;
                     if (HaveResult)
                     {
-                        Debug.Log(transform.eulerAngles);
+                        //Debug.Log(transform.eulerAngles);
                         ResultPanel.SetActive(true);
 
                         RouletteSong.SecondSong();

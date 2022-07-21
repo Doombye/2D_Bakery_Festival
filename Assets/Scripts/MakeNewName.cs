@@ -19,7 +19,7 @@ public class MakeNewName : Singleton<MakeNewName>
         isFirstLogin = true;
         value = System.Convert.ToBoolean(PlayerPrefs.GetInt("Panel"));
         PanelOnOff();
-        Debug.Log("시작 값 : " + value);
+        //Debug.Log("시작 값 : " + value);
 
     }
 
@@ -39,7 +39,7 @@ public class MakeNewName : Singleton<MakeNewName>
     }
     public void PanelOnOff()
     {
-        Debug.Log(value);
+        //Debug.Log(value);
 
         if (value == true)
         {

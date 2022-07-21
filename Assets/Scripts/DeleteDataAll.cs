@@ -13,14 +13,14 @@ public class DeleteDataAll : MonoBehaviour
     static void DeletePlayerPrefs()
     {
         PlayerPrefs.DeleteAll();
-        Debug.Log("All PlayerPrefs deleted");
+        //Debug.Log("All PlayerPrefs deleted");
     }
 
     [MenuItem("PlayerPrefs/Save All")]
     static void SavePlayerPrefs()
     {
         PlayerPrefs.Save();
-        Debug.Log("PlayerPrefs saved");
+        //Debug.Log("PlayerPrefs saved");
     }
 #endif
 
