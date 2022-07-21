@@ -19,7 +19,7 @@ public class GenerateFoods : MonoBehaviour
 
     float Food3Time = 0; 
 
-    int width = Screen.width;
+    float width = Screen.width;
     public bool Generatenow = false;
     DropFoodsStartTImers FoodTimer;
 
@@ -74,7 +74,7 @@ public class GenerateFoods : MonoBehaviour
             else
             {
                 Food1Time = 0;
-                int xPos = Random.Range(100, width - 60);
+                float xPos = Random.Range(0, width*2);
                 //Debug.Log(xPos);
                 Instantiate(Food1, new Vector3(xPos, DropYPosition.position.y, 0), Quaternion.identity, GameObject.Find("FoodsBank").transform);
 
@@ -97,7 +97,7 @@ public class GenerateFoods : MonoBehaviour
             else
             {
                 Food2Time = 0;
-                int xPos = Random.Range(100, width - 60);
+                float xPos = Random.Range(0, width*2);
                 Debug.Log(xPos);
                 Instantiate(Food2, new Vector3(xPos, DropYPosition.position.y, 0), Quaternion.identity, GameObject.Find("FoodsBank").transform);
                 StartCoroutine("Food2Timer");
@@ -120,7 +120,7 @@ public class GenerateFoods : MonoBehaviour
             else
             {
                 Food3Time = 0;
-                int xPos = Random.Range(100, width - 100);
+                float xPos = Random.Range(0, width*2);
                 Debug.Log(xPos);
                 Instantiate(Food3, new Vector3(xPos, DropYPosition.position.y, 0), Quaternion.identity, GameObject.Find("FoodsBank").transform);
                 StartCoroutine("Food3Timer");

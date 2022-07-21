@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class DropFoodsStartTImers : MonoBehaviour
 {
+
+    [SerializeField] GameObject timerText;
     //게임 시작하기 전에 3초 카운트를 적어주기 위한 패널과 텍스트 그리고 문자열이 들어갈 String 과 시간을 적어줄 Int
     public GameObject panel;
     public GameObject[] Buttons = new GameObject[3];
@@ -66,6 +68,7 @@ public class DropFoodsStartTImers : MonoBehaviour
             sec1 = 1f;
             IsStart = true;
             panel.SetActive(false);
+            timerText.SetActive(false);
             StartCoroutine("StartGameTimerCourtine");
         }
 
